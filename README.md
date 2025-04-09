@@ -1,3 +1,2 @@
 # homeworks-master-plsql
-Курс Мастер PLSQL
-Автор: Белых Андрей
+Домашки по курсу Мастер PLSQL
