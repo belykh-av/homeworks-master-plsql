@@ -1,0 +1,4 @@
+begin
+  null; --тест
+end;
+/
