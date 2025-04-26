@@ -1,6 +1,7 @@
 --Автор: Белых Андрей
 --Задание номер 7 - Record
 --25.04.2025. Этот файл не входит в основное задание курса по созданию API.
+--26.04.2025. Переделано по замечаниям. Обнулена переменная v_reс_1, а не ее поле v_rec_1.name
 
 declare
   type t_rec is record(id number(12),
@@ -26,10 +27,21 @@ begin
     ('created=' || to_char(v_rec_2.created_date, 'DD.MM.YYYY HH24:MI:SS') || '; ')||
     ('name="' || v_rec_2.name || '"'));
 
-  v_rec_1.name := null;
+  v_rec_1 := null;
 
-  dbms_output.put_line('record 1: Name ' || case when v_rec_1.name is null then 'It''s null' else 'It''s not null' end);
-  dbms_output.put_line('record 2: Name ' || case when v_rec_2.name is null then 'It''s null' else 'It''s not null' end);
+  dbms_output.put_line(
+    'record 1: ' ||
+    case
+      when v_rec_1.id is null and v_rec_1.created_date is null and v_rec_1.name is null then 'It''s null'
+      else 'It''s not null'
+    end);
+
+  dbms_output.put_line(
+    'record 2: ' ||
+    case
+      when v_rec_2.id is null and v_rec_2.created_date is null and v_rec_2.name is null then 'It''s null'
+      else 'It''s not null'
+    end);
 
   select *
   into v_payment_detail_field
