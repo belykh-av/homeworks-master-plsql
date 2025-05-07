@@ -9,7 +9,7 @@
 --            Добавлена проверка на пустую коллекцию и пустые эдементы коллекции в блоки: 1 и 5.
 --05.05.2025  Исправил блок 6 (удаление платежей) по замечаниям к ДЗ №10.
 --07.05.2025  Изменено с учетом задания ДЗ11 (SQL в PL/SQL).
---
+--08.05.2025  Скорректировано с учетом замечаний задания ДЗ11 (SQL в PL/SQL).
 ------------------------------------------------------------------------------------------------------------------------
 --1.Создание платежа.
 declare
@@ -66,12 +66,10 @@ begin
     into v_payment_id;
 
     --Создание деталей платежа
-    if v_payment_details is empty then
-      for i in v_payment_details.first .. v_payment_details.last loop
-        insert into payment_detail(payment_id, field_id, field_value)
-        values (v_payment_id, v_payment_details(i).field_id, v_payment_details(i).field_value);
-      end loop;
-    end if;
+    for i in v_payment_details.first .. v_payment_details.last loop
+      insert into payment_detail(payment_id, field_id, field_value)
+      values (v_payment_id, v_payment_details(i).field_id, v_payment_details(i).field_value);
+    end loop;
 
     --Сообщение об операции
     dbms_output.put_line('Дата операции: ' || to_char(v_current_dtime, 'DD.MM.YYYY HH24:MI:SS.FF'));
@@ -93,7 +91,6 @@ declare
   c_status_failed constant payment.status%type := 2;
   --
   v_payment_id payment.payment_id%type := 10; --ID платежа для операции
-  v_updated_id payment.payment_id%type; --ID найденного платежа (для проверки изменений)
   v_status_change_reason payment.status_change_reason%type := 'недостаточно средств';
   v_current_dtime timestamp(6) := systimestamp;
 begin
@@ -104,11 +101,9 @@ begin
   else
     update payment
     set status = c_status_failed, status_change_reason = v_status_change_reason
-    where payment_id = v_payment_id and status = c_status_created
-    returning payment_id
-    into v_updated_id;
+    where payment_id = v_payment_id and status = c_status_created;
 
-    if v_updated_id is null then
+    if sql%rowcount = 0 then
       dbms_output.put_line(
         'Платеж ID=' ||
         to_char(v_payment_id)||
@@ -136,7 +131,6 @@ declare
   c_status_canceled constant payment.status%type := 3;
   --
   v_payment_id payment.payment_id%type := 11; --ID платежа для операции
-  v_updated_id payment.payment_id%type; --ID найденного платежа (для проверки изменений)
   v_status_change_reason payment.status_change_reason%type := 'ошибка пользователя';
   v_current_dtime timestamp(3) := systimestamp;
 begin
@@ -147,11 +141,9 @@ begin
   else
     update payment
     set status = c_status_canceled, status_change_reason = v_status_change_reason
-    where payment_id = v_payment_id and status = c_status_created
-    returning payment_id
-    into v_updated_id;
+    where payment_id = v_payment_id and status = c_status_created;
 
-    if v_updated_id is null then
+    if sql%rowcount = 0 then
       dbms_output.put_line(
         'Платеж ID=' ||
         to_char(v_payment_id)||
@@ -223,7 +215,6 @@ declare
   c_payment_detail_field_id_is_checked constant payment_detail.field_id%type := 4; --Проверен ли платеж в системе "АнтиФрод"
   --
   v_payment_id payment.payment_id%type := 10; --ID платежа для операции
-  v_updated_id payment.payment_id%type; --ID найденного платежа (для проверки наличия платежа)
   v_current_date timestamp(2) := sysdate;
   --Детали платежа:
   v_payment_details t_payment_detail_array
@@ -233,20 +224,20 @@ declare
          t_payment_detail(c_payment_detail_field_id_client_software, 'web-клиент'));
   v_is_error boolean := false; --Флаг наличия ошибки при проверке данных
 begin
-  --Проверка данных
+  --Проверка задания платежа и наличия его в базе
   if v_payment_id is null then
     dbms_output.put_line('ID объекта не может быть пустым');
     v_is_error := true;
   else
-    select max(payment_id)
-    into v_updated_id
-    from payment
-    where payment_id = v_payment_id;
-
-    if v_updated_id is null then
+    --Чтобы не плодить лишние переменные, а также для улучшения читаемости кода, я иногда делаю проверку через курсор.
+    --Паша, как ты относишься к такому решению?
+    for r in (select 1
+              from payment
+              where payment_id = v_payment_id
+              having count(1) = 0) loop
       dbms_output.put_line('Платеж ID=' || to_char(v_payment_id) || ' не найден');
       v_is_error := true;
-    end if;
+    end loop;
   end if;
 
   --Провека на пустую коллекцию и на пустые поля коллекции
@@ -304,10 +295,10 @@ declare
   --
   v_payment_id payment.payment_id%type := 10; --ID платежа для удаления деталей
   v_current_date timestamp(2) := sysdate;
-  --Коллекция ID деталей для удаления:
+  --Коллекция ID деталей платежа для удаления:
   v_payment_detail_field_ids t_number_array
     := t_number_array(c_payment_detail_field_id_note, c_payment_detail_field_id_is_checked);
-  --Коллекция удаленных деталей:s
+  --Коллекция удаленных деталей платежа:
   v_deleted_field_ids t_number_array := t_number_array();
 begin
   if v_payment_id is null then
