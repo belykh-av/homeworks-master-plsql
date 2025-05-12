@@ -1,7 +1,7 @@
-declare
+п»їdeclare
   v_timer number;
 
-  --Проверка через обработку исключения
+  --РџСЂРѕРІРµСЂРєР° С‡РµСЂРµР· РѕР±СЂР°Р±РѕС‚РєСѓ РёСЃРєР»СЋС‡РµРЅРёСЏ
   function is_payment_exists_ndf(p_payment_id payment.payment_id%type)
     return boolean is
     v number;
@@ -17,7 +17,7 @@ declare
       return false;
   end;
   
-  --Проверка через select into
+  --РџСЂРѕРІРµСЂРєР° С‡РµСЂРµР· select into
   function is_payment_exists_sel(p_payment_id payment.payment_id%type)
     return boolean is
     v number;
@@ -34,7 +34,7 @@ declare
     end if;
   end;
 
-  --Проверка через курсор
+  --РџСЂРѕРІРµСЂРєР° С‡РµСЂРµР· РєСѓСЂСЃРѕСЂ
   function is_payment_exists_cur(p_payment_id payment.payment_id%type)
     return boolean is
   begin
@@ -81,7 +81,7 @@ begin
 
   dbms_output.put_line('CUR elapsed seconds: ' || (dbms_utility.get_time() - v_timer) / 100);
 end;
-/*  РЕЗУЛЬТАТЫ для 10 млн. проверок
+/*  Р Р•Р—РЈР›Р¬РўРђРўР« РґР»СЏ 10 РјР»РЅ. РїСЂРѕРІРµСЂРѕРє
 1 exists
 6 exists
 7 exists

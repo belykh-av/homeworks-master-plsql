@@ -1,26 +1,26 @@
---Тестовый модуль для задания HW12
+п»ї--РўРµСЃС‚РѕРІС‹Р№ РјРѕРґСѓР»СЊ РґР»СЏ Р·Р°РґР°РЅРёСЏ HW12
 ------------------------------------------------------------------------------------------------------------------------
 
---Запрос для проверки валидности созданных процедур и функций:
+--Р—Р°РїСЂРѕСЃ РґР»СЏ РїСЂРѕРІРµСЂРєРё РІР°Р»РёРґРЅРѕСЃС‚Рё СЃРѕР·РґР°РЅРЅС‹С… РїСЂРѕС†РµРґСѓСЂ Рё С„СѓРЅРєС†РёР№:
 select t.status, t.*
 from user_objects t
 where t.object_type in ('FUNCTION', 'PROCEDURE');
 /
 
 
---Посмотреть, что сейчас в таблицах:
+--РџРѕСЃРјРѕС‚СЂРµС‚СЊ, С‡С‚Рѕ СЃРµР№С‡Р°СЃ РІ С‚Р°Р±Р»РёС†Р°С…:
 select * from payment
 /
 select * from payment_detail
 /
 
 
---1.Создание платежа
+--1.РЎРѕР·РґР°РЅРёРµ РїР»Р°С‚РµР¶Р°
 declare
-  c_payment_detail_field_id_client_software constant payment_detail.field_id%type := 1; --Софт, через который совершался платеж
-  c_payment_detail_field_id_ip constant payment_detail.field_id%type := 2; --IP адрес плательщика
-  c_payment_detail_field_id_note constant payment_detail.field_id%type := 3; --Примечание к переводу
-  c_payment_detail_field_id_is_checked constant payment_detail.field_id%type := 4; --Проверен ли платеж в системе "АнтиФрод"
+  c_payment_detail_field_id_client_software constant payment_detail.field_id%type := 1; --РЎРѕС„С‚, С‡РµСЂРµР· РєРѕС‚РѕСЂС‹Р№ СЃРѕРІРµСЂС€Р°Р»СЃСЏ РїР»Р°С‚РµР¶
+  c_payment_detail_field_id_ip constant payment_detail.field_id%type := 2; --IP Р°РґСЂРµСЃ РїР»Р°С‚РµР»СЊС‰РёРєР°
+  c_payment_detail_field_id_note constant payment_detail.field_id%type := 3; --РџСЂРёРјРµС‡Р°РЅРёРµ Рє РїРµСЂРµРІРѕРґСѓ
+  c_payment_detail_field_id_is_checked constant payment_detail.field_id%type := 4; --РџСЂРѕРІРµСЂРµРЅ Р»Рё РїР»Р°С‚РµР¶ РІ СЃРёСЃС‚РµРјРµ "РђРЅС‚РёР¤СЂРѕРґ"
   v_payment_id payment.payment_id%type;
 begin
   v_payment_id := create_payment(
@@ -31,55 +31,55 @@ begin
                     p_currency_id => 643,
                     p_payment_details => t_payment_detail_array(
                                           t_payment_detail(c_payment_detail_field_id_client_software,
-                                                           'Клинет-банк какой-то'),
+                                                           'РљР»РёРЅРµС‚-Р±Р°РЅРє РєР°РєРѕР№-С‚Рѕ'),
                                           t_payment_detail(c_payment_detail_field_id_ip, '172.173.120.300'),
                                           t_payment_detail(c_payment_detail_field_id_note,
-                                                           'Тестовый переводик')));
+                                                           'РўРµСЃС‚РѕРІС‹Р№ РїРµСЂРµРІРѕРґРёРє')));
 end;
 /
 
---2.Сброс платежа в "ошибочный статус".
+--2.РЎР±СЂРѕСЃ РїР»Р°С‚РµР¶Р° РІ "РѕС€РёР±РѕС‡РЅС‹Р№ СЃС‚Р°С‚СѓСЃ".
 begin
   fail_payment(63);
 end;
 /
 
---3.Отмена платежа.
+--3.РћС‚РјРµРЅР° РїР»Р°С‚РµР¶Р°.
 begin
   cancel_payment(64);
 end;
 /
 
---4.Успешное завершение платежа.
+--4.РЈСЃРїРµС€РЅРѕРµ Р·Р°РІРµСЂС€РµРЅРёРµ РїР»Р°С‚РµР¶Р°.
 begin
   successful_finish_payment(65);
 end;
 /
 
---5.Данные платежа добавлены или обновлены.
+--5.Р”Р°РЅРЅС‹Рµ РїР»Р°С‚РµР¶Р° РґРѕР±Р°РІР»РµРЅС‹ РёР»Рё РѕР±РЅРѕРІР»РµРЅС‹.
 declare
-  --ID полей данных деталей платежа:
-  c_payment_detail_field_id_client_software constant payment_detail.field_id%type := 1; --Софт, через который совершался платеж
-  c_payment_detail_field_id_ip constant payment_detail.field_id%type := 2; --IP адрес плательщика
-  c_payment_detail_field_id_note constant payment_detail.field_id%type := 3; --Примечание к переводу
-  c_payment_detail_field_id_is_checked constant payment_detail.field_id%type := 4; --Проверен ли платеж в системе "АнтиФрод"
+  --ID РїРѕР»РµР№ РґР°РЅРЅС‹С… РґРµС‚Р°Р»РµР№ РїР»Р°С‚РµР¶Р°:
+  c_payment_detail_field_id_client_software constant payment_detail.field_id%type := 1; --РЎРѕС„С‚, С‡РµСЂРµР· РєРѕС‚РѕСЂС‹Р№ СЃРѕРІРµСЂС€Р°Р»СЃСЏ РїР»Р°С‚РµР¶
+  c_payment_detail_field_id_ip constant payment_detail.field_id%type := 2; --IP Р°РґСЂРµСЃ РїР»Р°С‚РµР»СЊС‰РёРєР°
+  c_payment_detail_field_id_note constant payment_detail.field_id%type := 3; --РџСЂРёРјРµС‡Р°РЅРёРµ Рє РїРµСЂРµРІРѕРґСѓ
+  c_payment_detail_field_id_is_checked constant payment_detail.field_id%type := 4; --РџСЂРѕРІРµСЂРµРЅ Р»Рё РїР»Р°С‚РµР¶ РІ СЃРёСЃС‚РµРјРµ "РђРЅС‚РёР¤СЂРѕРґ"
 begin
   insert_or_update_payment_detail(
     66,
     t_payment_detail_array(
-      t_payment_detail(c_payment_detail_field_id_note, 'Изменение данных платежа'),
+      t_payment_detail(c_payment_detail_field_id_note, 'РР·РјРµРЅРµРЅРёРµ РґР°РЅРЅС‹С… РїР»Р°С‚РµР¶Р°'),
       t_payment_detail(c_payment_detail_field_id_ip, '172.173.1.2'),
-      t_payment_detail(c_payment_detail_field_id_client_software, 'web-клиент')));
+      t_payment_detail(c_payment_detail_field_id_client_software, 'web-РєР»РёРµРЅС‚')));
 end;
 /
 
---6.Детали платежа удалены.
+--6.Р”РµС‚Р°Р»Рё РїР»Р°С‚РµР¶Р° СѓРґР°Р»РµРЅС‹.
 declare
-  --ID полей данных деталей платежа:
-  c_payment_detail_field_id_client_software constant payment_detail.field_id%type := 1; --Софт, через который совершался платеж
-  c_payment_detail_field_id_ip constant payment_detail.field_id%type := 2; --IP адрес плательщика
-  c_payment_detail_field_id_note constant payment_detail.field_id%type := 3; --Примечание к переводу
-  c_payment_detail_field_id_is_checked constant payment_detail.field_id%type := 4; --Проверен ли платеж в системе "АнтиФрод"
+  --ID РїРѕР»РµР№ РґР°РЅРЅС‹С… РґРµС‚Р°Р»РµР№ РїР»Р°С‚РµР¶Р°:
+  c_payment_detail_field_id_client_software constant payment_detail.field_id%type := 1; --РЎРѕС„С‚, С‡РµСЂРµР· РєРѕС‚РѕСЂС‹Р№ СЃРѕРІРµСЂС€Р°Р»СЃСЏ РїР»Р°С‚РµР¶
+  c_payment_detail_field_id_ip constant payment_detail.field_id%type := 2; --IP Р°РґСЂРµСЃ РїР»Р°С‚РµР»СЊС‰РёРєР°
+  c_payment_detail_field_id_note constant payment_detail.field_id%type := 3; --РџСЂРёРјРµС‡Р°РЅРёРµ Рє РїРµСЂРµРІРѕРґСѓ
+  c_payment_detail_field_id_is_checked constant payment_detail.field_id%type := 4; --РџСЂРѕРІРµСЂРµРЅ Р»Рё РїР»Р°С‚РµР¶ РІ СЃРёСЃС‚РµРјРµ "РђРЅС‚РёР¤СЂРѕРґ"
 begin
   delete_payment_detail(66, t_number_array(c_payment_detail_field_id_ip, c_payment_detail_field_id_is_checked));
 end;
