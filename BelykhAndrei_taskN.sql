@@ -11,9 +11,11 @@
 --07.05.2025  Изменено с учетом задания ДЗ11 (SQL в PL/SQL).
 --08.05.2025  Скорректировано с учетом замечаний задания ДЗ11 (SQL в PL/SQL).
 --09.05.2025  Изменено с учтом ДЗ12 ("Процедуры и функции")
+--13.05.2025  Скорректированы блоки 1, 5 и 6 c учетом замечаний ДЗ12 ("Процедуры и функции")
 ------------------------------------------------------------------------------------------------------------------------
 --1.Создание платежа.
-create or replace function create_payment(p_from_client_id payment.from_client_id%type,
+create or replace function create_payment(p_create_dtime payment.create_dtime%type,
+                                          p_from_client_id payment.from_client_id%type,
                                           p_to_client_id payment.to_client_id%type,
                                           p_summa payment.summa%type,
                                           p_currency_id payment.currency_id%type := 643,
@@ -53,7 +55,7 @@ begin
     insert into payment(payment_id, create_dtime, summa, currency_id, from_client_id, to_client_id, status)
       values (
                payment_seq.nextval,
-               v_current_dtime,
+               p_create_dtime,
                p_summa,
                p_currency_id,
                p_from_client_id,
@@ -203,21 +205,22 @@ create or replace procedure insert_or_update_payment_detail(p_payment_id payment
                                                             p_payment_details t_payment_detail_array) is
   v_current_date timestamp(2) := sysdate; --Дата операции
   v_is_error boolean := false; --Флаг наличия ошибки при проверке данных
+  v_payment_id payment.payment_id%type; --ID найденного платежа
 begin
   --Проверка задания платежа и наличия его в базе
   if p_payment_id is null then
     dbms_output.put_line('ID объекта не может быть пустым');
     v_is_error := true;
   else
-    --Чтобы не плодить лишние переменные, а также для улучшения читаемости кода, я иногда делаю проверку через курсор.
-    --Паша, как ты относишься к такому решению?
-    for r in (select 1
-              from payment
-              where payment_id = p_payment_id
-              having count(1) = 0) loop
+    select max(payment_id)
+    into v_payment_id
+    from payment
+    where payment_id = p_payment_id;
+
+    if v_payment_id is null then
       dbms_output.put_line('Платеж ID=' || to_char(p_payment_id) || ' не найден');
       v_is_error := true;
-    end loop;
+    end if;
   end if;
 
   --Провека на пустую коллекцию и на пустые поля коллекции
@@ -266,7 +269,8 @@ end;
 
 ------------------------------------------------------------------------------------------------------------------------
 --6.Детали платежа удалены.
-create or replace procedure delete_payment_detail(p_payment_id payment.payment_id%type) is
+create or replace procedure delete_payment_detail(p_payment_id payment.payment_id%type,
+                                                  p_payment_detail_field_ids t_number_array) is
   --ID полей данных деталей платежа:
   c_payment_detail_field_id_client_software constant payment_detail.field_id%type := 1; --Софт, через который совершался платеж
   c_payment_detail_field_id_ip constant payment_detail.field_id%type := 2; --IP адрес плательщика
@@ -274,21 +278,13 @@ create or replace procedure delete_payment_detail(p_payment_id payment.payment_i
   c_payment_detail_field_id_is_checked constant payment_detail.field_id%type := 4; --Проверен ли платеж в системе "АнтиФрод"
   --
   v_current_date timestamp(2) := sysdate; --Дата операции
-  --Коллекция ID деталей платежа для удаления:
-  --(не очень понятно, зачем она нужна, мы же ведь удаляем по идее все детали платежа. Пока оставлю, т.к. первом задании было сообщение: "Детали платежа удалены по списку id_полей").
-  v_payment_detail_field_ids t_number_array
-    := t_number_array(c_payment_detail_field_id_client_software,
-                      c_payment_detail_field_id_note,
-                      c_payment_detail_field_id_ip,
-                      c_payment_detail_field_id_is_checked);
-  --Коллекция удаленных деталей платежа:
-  v_deleted_field_ids t_number_array := t_number_array();
+  v_deleted_field_ids t_number_array := t_number_array(); --Коллекция удаленных деталей платежа
 begin
   if p_payment_id is null then
     dbms_output.put_line('ID объекта не может быть пустым');
   else
     delete from payment_detail
-    where payment_id = p_payment_id and field_id in (select column_value from table(v_payment_detail_field_ids))
+    where payment_id = p_payment_id and field_id in (select column_value from table(p_payment_detail_field_ids))
     returning field_id
     bulk collect into v_deleted_field_ids;
 
