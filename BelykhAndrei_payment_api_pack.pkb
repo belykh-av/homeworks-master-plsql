@@ -1,44 +1,65 @@
 create or replace package body payment_api_pack is
   ----------------------------------------------------------------------------------------------------------------------
-  --Проверка наличия платежа в базе данных, в зависимости от его статуса (опционально)
-  --Возвращает: true - платеж существует, false - платеж не существует (ошибка при этом выводится в буфер)
-  function check_payment_exists(p_payment_id payment.payment_id%type, p_status payment.status%type := null)
-    return boolean is
+  --Проверка наличия платежа
+  procedure check_payment_exists(p_payment_id payment.payment_id%type) is
     v_payment_id payment.payment_id%type;
   begin
     if p_payment_id is null then
-      --Пустой ID платежа
-      dbms_output.put_line('ОШИБКА! Не задан ID платежа для проверки');
-      return false;
-    elsif p_status is null then
-      --Проверка наличия платежа
-      select max(payment_id)
-      into v_payment_id
-      from payment
-      where payment_id = p_payment_id;
-
-      if v_payment_id is null then
-        dbms_output.put_line('ОШИБКА! Платеж ID=' || to_char(p_payment_id) || ' не найден');
-        return false;
-      end if;
-    else
-      --Проверка наличия платежа с заданным статусом
-      select max(payment_id)
-      into v_payment_id
-      from payment
-      where payment_id = p_payment_id and status = p_status;
-
-      if v_payment_id is null then
-        dbms_output.put_line(
-          'ОШИБКА! Платеж ID=' ||
-          to_char(p_payment_id)||
-          ' не найден или находится не в статусе ' ||
-          to_char(p_status));
-        return false;
-      end if;
+      raise e_empty_payment_id;
     end if;
 
-    return true;
+    --Найти платеж
+    select max(payment_id)
+    into v_payment_id
+    from payment
+    where payment_id = p_payment_id;
+
+    if v_payment_id is null then
+      raise e_payment_not_found;
+    end if;
+  exception
+    when e_empty_payment_id then
+      raise_application_error(c_error_code_empty_payment_id, c_error_message_empty_payment_id);
+    when e_payment_not_found then
+      raise_application_error(c_error_code_payment_not_found, c_error_message_payment_not_found);
+  end;
+
+  ----------------------------------------------------------------------------------------------------------------------
+  --Проверка наличия платежа и его статуса
+  procedure check_payment_status(p_payment_id payment.payment_id%type, p_status payment.status%type) is
+    v_payment_id payment.payment_id%type;
+    v_status payment.status%type;
+  begin
+    if p_payment_id is null then
+      raise e_empty_payment_id;
+    end if;
+
+    if p_status is null then
+      raise e_empty_status;
+    end if;
+
+    --Найти платеж и его статус
+    select max(payment_id), max(status)
+    into v_payment_id, v_status
+    from payment
+    where payment_id = p_payment_id;
+
+    if v_payment_id is null then
+      raise e_payment_not_found;
+    end if;
+
+    if v_status <> p_status then
+      raise e_payment_status_error;
+    end if;
+  exception
+    when e_empty_payment_id then
+      raise_application_error(c_error_code_empty_payment_id, c_error_message_empty_payment_id);
+    when e_empty_status then
+      raise_application_error(c_error_code_empty_status, c_error_message_empty_status);
+    when e_payment_not_found then
+      raise_application_error(c_error_code_payment_not_found, c_error_message_payment_not_found);
+    when e_payment_status_error then
+      raise_application_error(c_error_code_status_error, c_error_message_status_error);
   end;
 
   ----------------------------------------------------------------------------------------------------------------------
@@ -52,39 +73,33 @@ create or replace package body payment_api_pack is
     return payment.payment_id%type is
     v_payment_id payment.payment_id%type := null; --ID созданного платежа
     v_current_dtime timestamp := systimestamp; --Дата операции
-    v_is_error boolean := false; --Флаг ошибки проверки данных платежа
   begin
-    --Провека коллекции деталей платежа с установкой флага ошибки
-    v_is_error := not payment_detail_api_pack.check_payment_details(p_payment_details);
+    --Провека коллекции деталей платежа
+    payment_detail_api_pack.check_payment_details(p_payment_details);
 
     --Создание платежа, если нет флага ошибки
-    if not v_is_error then
-      insert into payment(payment_id, create_dtime, summa, currency_id, from_client_id, to_client_id, status)
-        values (
-                 payment_seq.nextval,
-                 p_create_dtime,
-                 p_summa,
-                 p_currency_id,
-                 p_from_client_id,
-                 p_to_client_id,
-                 c_status_created)
-      returning payment_id
-      into v_payment_id;
+    insert into payment(payment_id, create_dtime, summa, currency_id, from_client_id, to_client_id, status)
+      values (
+               payment_seq.nextval,
+               p_create_dtime,
+               p_summa,
+               p_currency_id,
+               p_from_client_id,
+               p_to_client_id,
+               c_status_created)
+    returning payment_id
+    into v_payment_id;
 
-      --Создание деталей платежа
-      insert into payment_detail(payment_id, field_id, field_value)
-        select v_payment_id, pd.field_id, pd.field_value
-        from table(p_payment_details) pd;
+    --Создание деталей платежа
+    insert into payment_detail(payment_id, field_id, field_value)
+      select v_payment_id, pd.field_id, pd.field_value
+      from table(p_payment_details) pd;
 
-      --Сообщение об операции
-      dbms_output.put_line('Дата операции: ' || to_char(v_current_dtime, 'DD.MM.YYYY HH24:MI:SS.FF'));
-      dbms_output.put_line('Платеж создан. ' || 'Статус: ' || c_status_created);
-      dbms_output.put_line('ID объекта: ' || to_char(v_payment_id));
-    else
-      dbms_output.put_line('Ошибка создания платежа');
-    end if;
+    --Сообщение об операции
+    dbms_output.put_line('Дата операции: ' || to_char(v_current_dtime, 'DD.MM.YYYY HH24:MI:SS.FF'));
+    dbms_output.put_line('Платеж создан. ' || 'Статус: ' || c_status_created);
+    dbms_output.put_line('ID объекта: ' || to_char(v_payment_id));
 
-    dbms_output.put_line('');
     return v_payment_id;
   end;
 
@@ -95,32 +110,26 @@ create or replace package body payment_api_pack is
     p_status_change_reason payment.status_change_reason%type := c_status_change_reason_no_money) is
     v_current_dtime timestamp(6) := systimestamp; --Дата операции
   begin
-    if p_payment_id is null then
-      dbms_output.put_line('ID объекта не может быть пустым');
-    elsif p_status_change_reason is null then
-      dbms_output.put_line('Причина не может быть пустой');
-    else
-      update payment
-      set status = c_status_failed, status_change_reason = p_status_change_reason
-      where payment_id = p_payment_id and status = c_status_created;
-
-      if sql%rowcount = 0 then
-        dbms_output.put_line(
-          'Платеж ID=' ||
-          to_char(p_payment_id)||
-          ' не найден или находится не в статусе "Платеж создан"' ||
-          c_status_created);
-      else
-        dbms_output.put_line('Дата операции: ' || to_char(v_current_dtime, 'DD/MM/YYYY HH24:MI:SS.FF6'));
-        dbms_output.put_line(
-          'Сброс платежа в "ошибочный статус" с указанием причины. ' ||
-          ('Статус: ' || c_status_failed || '. ')||
-          ('Причина: ' || p_status_change_reason));
-        dbms_output.put_line('ID объекта: ' || to_char(p_payment_id));
-      end if;
+    if p_status_change_reason is null then
+      raise e_empty_status_change_reason;
     end if;
 
-    dbms_output.put_line('');
+    --Проверить, что платеж существует и находится в статусе "Создан"
+    check_payment_status(p_payment_id, c_status_created);
+
+    update payment
+    set status = c_status_failed, status_change_reason = p_status_change_reason
+    where payment_id = p_payment_id;
+
+    dbms_output.put_line('Дата операции: ' || to_char(v_current_dtime, 'DD/MM/YYYY HH24:MI:SS.FF6'));
+    dbms_output.put_line(
+      'Сброс платежа в "ошибочный статус" с указанием причины. ' ||
+      ('Статус: ' || c_status_failed || '. ')||
+      ('Причина: ' || p_status_change_reason));
+    dbms_output.put_line('ID объекта: ' || to_char(p_payment_id));
+  exception
+    when e_empty_status_change_reason then
+      raise_application_error(c_error_code_empty_status_change_reason, c_error_message_empty_status_change_reason);
   end;
 
   ------------------------------------------------------------------------------------------------------------------------
@@ -130,32 +139,26 @@ create or replace package body payment_api_pack is
     p_status_change_reason payment.status_change_reason%type := c_status_change_reason_user_error) is
     v_current_dtime timestamp(3) := systimestamp; --Дата операции
   begin
-    if p_payment_id is null then
-      dbms_output.put_line('ID объекта не может быть пустым');
-    elsif p_status_change_reason is null then
-      dbms_output.put_line('Причина не может быть пустой');
-    else
-      update payment
-      set status = c_status_canceled, status_change_reason = p_status_change_reason
-      where payment_id = p_payment_id and status = c_status_created;
-
-      if sql%rowcount = 0 then
-        dbms_output.put_line(
-          'Платеж ID=' ||
-          to_char(p_payment_id)||
-          ' не найден или находится не в статусе "Платеж создан"' ||
-          c_status_created);
-      else
-        dbms_output.put_line('Дата операции: ' || to_char(v_current_dtime, 'YYYY-Mon-DDy HH24:MI:SS.FF3'));
-        dbms_output.put_line(
-          'Отмена платежа с указанием причины. ' ||
-          ('Статус: ' || c_status_canceled || '. ')||
-          ('Причина: ' || p_status_change_reason));
-        dbms_output.put_line('ID объекта: ' || to_char(p_payment_id));
-      end if;
+    if p_status_change_reason is null then
+      raise e_empty_status_change_reason;
     end if;
 
-    dbms_output.put_line('');
+    --Проверить, что платеж существует и находится в статусе "Создан"
+    check_payment_status(p_payment_id, c_status_created);
+
+    update payment
+    set status = c_status_canceled, status_change_reason = p_status_change_reason
+    where payment_id = p_payment_id;
+
+    dbms_output.put_line('Дата операции: ' || to_char(v_current_dtime, 'YYYY-Mon-DDy HH24:MI:SS.FF3'));
+    dbms_output.put_line(
+      'Отмена платежа с указанием причины. ' ||
+      ('Статус: ' || c_status_canceled || '. ')||
+      ('Причина: ' || p_status_change_reason));
+    dbms_output.put_line('ID объекта: ' || to_char(p_payment_id));
+  exception
+    when e_empty_status_change_reason then
+      raise_application_error(c_error_code_empty_status_change_reason, c_error_message_empty_status_change_reason);
   end;
 
   ------------------------------------------------------------------------------------------------------------------------
@@ -163,30 +166,19 @@ create or replace package body payment_api_pack is
   procedure successful_finish_payment(p_payment_id payment.payment_id%type) is
     v_current_dtime timestamp(2) := systimestamp; --Дата операции
   begin
-    if p_payment_id is null then
-      dbms_output.put_line('ID объекта не может быть пустым');
-    else
-      update payment
-      set status = c_status_completed
-      where payment_id = p_payment_id and status = c_status_created;
+    --Проверить, что платеж существует и находится в статусе "Создан"
+    check_payment_status(p_payment_id, c_status_created);
 
-      if sql%rowcount = 0 then
-        dbms_output.put_line(
-          'Платеж ID=' ||
-          to_char(p_payment_id)||
-          ' не найден или находится не в статусе "Платеж создан"' ||
-          c_status_created);
-      else
-        dbms_output.put_line(
-          'Дата операции: ' ||
-          to_char(v_current_dtime, 'DD Month Year: "Quarter="Q "Week="W "DayOfYear="DDD "DayOfWeek"=Day HH24:MI:SS'));
+    update payment
+    set status = c_status_completed
+    where payment_id = p_payment_id;
 
-        dbms_output.put_line(
-          'Успешное завершение платежа. ' || 'Статус: ' || c_status_completed);
-        dbms_output.put_line('ID объекта: ' || to_char(p_payment_id));
-      end if;
-    end if;
+    dbms_output.put_line(
+      'Дата операции: ' ||
+      to_char(v_current_dtime, 'DD Month Year: "Quarter="Q "Week="W "DayOfYear="DDD "DayOfWeek"=Day HH24:MI:SS'));
 
-    dbms_output.put_line('');
+    dbms_output.put_line(
+      'Успешное завершение платежа. ' || 'Статус: ' || c_status_completed);
+    dbms_output.put_line('ID объекта: ' || to_char(p_payment_id));
   end;
 end;
