@@ -4,6 +4,7 @@ create or replace package payment_api_pack is
   -- Автор: Белых Андрей
   -- 13.05.2025. Создано в ДЗ13 на основе процедур файла BelykhAndrei_TaskN.sql.
   -- 25.05.2025. ДЗ14. Добавлены исключения.
+  -- 31.05.2025. ДЗ15. Добавлен флаг использования API и запрет на прямые DML-операции с таблицей PAYMENT.
   ---------------------------------------------------------------------------------------------------------------------
   --КОНСТАНТЫ:
 
@@ -24,22 +25,29 @@ create or replace package payment_api_pack is
   c_status_change_reason_user_error constant payment.status_change_reason%type
     := 'ошибка пользователя' ;
 
-  --Коды ошибок:
+  --Коды ошибок:  
+  c_error_code_api_restriction constant number := -20100;
   c_error_code_empty_payment_id constant number := -20101;  
   c_error_code_empty_status constant number := -20102;
   c_error_code_empty_status_change_reason constant number := -20103;  
   c_error_code_payment_not_found constant number := -20104;
-  c_error_code_status_error constant number := -20105;
+  c_error_code_status_error constant number := -20105;  
+  c_error_code_delete_restriction constant number := -20106;
 
   --Сообщения об ошибках:
+  c_error_message_api_restriction constant varchar2(100 char) := 'Изменения в таблицу PAYMENT можно вносить только через API';
   c_error_message_empty_payment_id constant varchar2(100 char) := 'ID объекта не может быть пустым';
   c_error_message_empty_status constant varchar2(100 char) := 'Не задан статус';
   c_error_message_empty_status_change_reason constant varchar2(100 char) := 'Причина не может быть пустой';
   c_error_message_payment_not_found constant varchar2(100 char) := 'Не найден платеж';  
   c_error_message_status_error constant varchar2(100 char) := 'Ошибка статуса платежа';
+  c_error_message_delete_restriction constant varchar2(100 char) := 'Удаление платежей запрещено';
 
   ---------------------------------------------------------------------------------------------------------------------
   --ИСКЛЮЧЕНИЯ:
+  e_api_restriction exception; --Внесение изменений только через API
+  pragma exception_init(e_api_restriction, c_error_code_api_restriction);
+  --
   e_empty_payment_id exception; --Не задан id платежа
   pragma exception_init(e_empty_payment_id, c_error_code_empty_payment_id);
   --
@@ -54,9 +62,14 @@ create or replace package payment_api_pack is
   --
   e_payment_status_error exception; --Ошибка статуса платежа
   pragma exception_init(e_payment_status_error, c_error_code_status_error);
+  --
+  e_payment_delete_restriction exception; --Удаление платежей запрещено
+  pragma exception_init(e_payment_delete_restriction, c_error_code_delete_restriction);
 
   ---------------------------------------------------------------------------------------------------------------------
   --МЕТОДЫ:
+  --Проверка на внесение изменений через API
+  procedure api_restiction;  
 
   --Проверка наличия платежа в базе данных
   procedure check_payment_exists(p_payment_id payment.payment_id%type);
