@@ -1,4 +1,16 @@
 create or replace package body payment_api_pack is
+  --Флаг использования API для венения изменений в таблицу payment
+  g_is_api boolean := false;
+
+  ----------------------------------------------------------------------------------------------------------------------
+  --Проверка на внесение изменений через API
+  procedure api_restiction is
+  begin
+    if not g_is_api then
+      raise_application_error(c_error_code_api_restriction, c_error_message_api_restriction);
+    end if;
+  end;
+
   ----------------------------------------------------------------------------------------------------------------------
   --Проверка наличия платежа
   procedure check_payment_exists(p_payment_id payment.payment_id%type) is
@@ -77,6 +89,8 @@ create or replace package body payment_api_pack is
     --Провека коллекции деталей платежа
     payment_detail_api_pack.check_payment_details(p_payment_details);
 
+    g_is_api := true;
+
     --Создание платежа, если нет флага ошибки
     insert into payment(payment_id, create_dtime, summa, currency_id, from_client_id, to_client_id, status)
       values (
@@ -90,10 +104,13 @@ create or replace package body payment_api_pack is
     returning payment_id
     into v_payment_id;
 
+    g_is_api := false;
+
     --Создание деталей платежа
-    insert into payment_detail(payment_id, field_id, field_value)
-      select v_payment_id, pd.field_id, pd.field_value
-      from table(p_payment_details) pd;
+    payment_detail_api_pack.insert_payment_detail(p_payment_id => v_payment_id, p_payment_details => p_payment_details);
+    --insert into payment_detail(payment_id, field_id, field_value)
+    --  select v_payment_id, pd.field_id, pd.field_value
+    --  from table(p_payment_details) pd;
 
     --Сообщение об операции
     dbms_output.put_line('Дата операции: ' || to_char(v_current_dtime, 'DD.MM.YYYY HH24:MI:SS.FF'));
@@ -101,6 +118,10 @@ create or replace package body payment_api_pack is
     dbms_output.put_line('ID объекта: ' || to_char(v_payment_id));
 
     return v_payment_id;
+  exception
+    when others then
+      g_is_api := false;
+      raise;
   end;
 
   ----------------------------------------------------------------------------------------------------------------------
@@ -117,9 +138,13 @@ create or replace package body payment_api_pack is
     --Проверить, что платеж существует и находится в статусе "Создан"
     check_payment_status(p_payment_id, c_status_created);
 
+    g_is_api := true;
+
     update payment
     set status = c_status_failed, status_change_reason = p_status_change_reason
     where payment_id = p_payment_id;
+
+    g_is_api := false;
 
     dbms_output.put_line('Дата операции: ' || to_char(v_current_dtime, 'DD/MM/YYYY HH24:MI:SS.FF6'));
     dbms_output.put_line(
@@ -130,6 +155,9 @@ create or replace package body payment_api_pack is
   exception
     when e_empty_status_change_reason then
       raise_application_error(c_error_code_empty_status_change_reason, c_error_message_empty_status_change_reason);
+    when others then
+      g_is_api := false;
+      raise;
   end;
 
   ------------------------------------------------------------------------------------------------------------------------
@@ -146,9 +174,13 @@ create or replace package body payment_api_pack is
     --Проверить, что платеж существует и находится в статусе "Создан"
     check_payment_status(p_payment_id, c_status_created);
 
+    g_is_api := true;
+
     update payment
     set status = c_status_canceled, status_change_reason = p_status_change_reason
     where payment_id = p_payment_id;
+
+    g_is_api := false;
 
     dbms_output.put_line('Дата операции: ' || to_char(v_current_dtime, 'YYYY-Mon-DDy HH24:MI:SS.FF3'));
     dbms_output.put_line(
@@ -159,6 +191,9 @@ create or replace package body payment_api_pack is
   exception
     when e_empty_status_change_reason then
       raise_application_error(c_error_code_empty_status_change_reason, c_error_message_empty_status_change_reason);
+    when others then
+      g_is_api := false;
+      raise;
   end;
 
   ------------------------------------------------------------------------------------------------------------------------
@@ -169,9 +204,13 @@ create or replace package body payment_api_pack is
     --Проверить, что платеж существует и находится в статусе "Создан"
     check_payment_status(p_payment_id, c_status_created);
 
+    g_is_api := true;
+
     update payment
     set status = c_status_completed
     where payment_id = p_payment_id;
+
+    g_is_api := false;
 
     dbms_output.put_line(
       'Дата операции: ' ||
@@ -180,5 +219,9 @@ create or replace package body payment_api_pack is
     dbms_output.put_line(
       'Успешное завершение платежа. ' || 'Статус: ' || c_status_completed);
     dbms_output.put_line('ID объекта: ' || to_char(p_payment_id));
+  exception
+    when others then
+      g_is_api := false;
+      raise;
   end;
 end;

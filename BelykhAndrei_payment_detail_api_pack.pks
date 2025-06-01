@@ -4,6 +4,7 @@ create or replace package payment_detail_api_pack is
   -- Автор: Белых Андрей
   -- 13.05.2025. Создано в ДЗ13 на основе процедур файла BelykhAndrei_TaskN.sql.
   -- 25.05.2025. ДЗ14. Добавлены исключения.
+  -- 31.05.2025. ДЗ15. Добавлен флаг использования API и запрет на прямые DML-операции с таблицей PAYMENT_DETAIL.
   ---------------------------------------------------------------------------------------------------------------------
   --КОНСТАНТЫ:
 
@@ -14,17 +15,22 @@ create or replace package payment_detail_api_pack is
   c_payment_detail_field_id_is_checked constant payment_detail.field_id%type := 4; --Проверен ли платеж в системе "АнтиФрод"
 
   --Коды ошибок: 
+  c_error_code_api_restriction constant number := -20200;
   c_error_code_empty_payment_details constant number := -20201;
   c_error_code_empty_field_id constant number := -20202;
-  c_error_code_empty_field_value constant number := -20203;
+  c_error_code_empty_field_value constant number := -20203;  
 
   --Сообщения об ошибках: 
+  c_error_message_api_restriction constant varchar2(100 char) := 'Изменения в таблицу PAYMENT_DETAIL можно вносить только через API';
   c_error_message_empty_payment_details constant varchar2(100 char) := 'Коллекция не содержит данных';
   c_error_message_empty_field_id constant varchar2(100 char) := 'ID поля не может быть пустым';
   c_error_message_empty_field_value constant varchar2(100 char) := 'Значение в поле не может быть пустым';
     
   ---------------------------------------------------------------------------------------------------------------------
   --ИСКЛЮЧЕНИЯ:
+  e_api_restriction exception; --Внесение изменений только через API
+  pragma exception_init(e_api_restriction, c_error_code_api_restriction);
+  --
   e_empty_payment_details exception; --Коллекция не содержит данных
   pragma exception_init(e_empty_payment_details, c_error_code_empty_payment_details);
   -- 
@@ -36,14 +42,19 @@ create or replace package payment_detail_api_pack is
   
   ----------------------------------------------------------------------------------------------------------------------
   --МЕТОДЫ:
-
-  --Проверка коллекции деталей платежей.
+  --Проверка на внесение изменений через API
+  procedure api_restiction;
+  
+  --Проверка коллекции деталей платежей
   procedure check_payment_details(p_payment_details t_payment_detail_array);
 
-  --Данные платежа добавлены или обновлены.
+  --Добавление деталей платежа
+  procedure insert_payment_detail(p_payment_id payment.payment_id%type, p_payment_details t_payment_detail_array);
+  
+  --Данные платежа добавлены или обновлены
   procedure insert_or_update_payment_detail(p_payment_id payment.payment_id%type,
                                             p_payment_details t_payment_detail_array);
 
-  --Детали платежа удалены.
+  --Детали платежа удалены
   procedure delete_payment_detail(p_payment_id payment.payment_id%type, p_payment_detail_field_ids t_number_array);
 end;
