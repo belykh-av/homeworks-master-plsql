@@ -3,6 +3,7 @@
   on payment
   for each row
 begin
-  raise_application_error(payment_api_pack.c_error_code_delete_restriction,
-                          payment_api_pack.c_error_message_delete_restriction);
+  if common_pack.is_api then
+    payment_api_pack.check_delete;
+  end if;
 end;

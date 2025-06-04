@@ -7,37 +7,41 @@ create or replace package body payment_detail_api_pack is
   procedure api_restiction is
   begin
     if not g_is_api then
-      raise_application_error(c_error_code_api_restriction, c_error_message_api_restriction);
+      raise_application_error(common_pack.c_error_code_payment_detail_api_restriction,
+                              common_pack.c_error_message_payment_detail_api_restriction);
     end if;
   end;
 
   ----------------------------------------------------------------------------------------------------------------------
   --Проверка коллекции деталей платежей.
-  procedure check_payment_details(p_payment_details t_payment_detail_array) is
+  procedure check_payment_details(p_payment_details in t_payment_detail_array) is
   begin
     if p_payment_details is empty then
-      raise e_empty_payment_details;
+      raise common_pack.e_empty_payment_details;
     end if;
 
     for i in p_payment_details.first .. p_payment_details.last loop
       if p_payment_details(i).field_id is null then
-        raise e_empty_field_id;
+        raise common_pack.e_empty_field_id;
       elsif p_payment_details(i).field_value is null then
-        raise e_empty_field_value;
+        raise common_pack.e_empty_field_value;
       end if;
     end loop;
   exception
-    when e_empty_payment_details then
-      raise_application_error(c_error_code_empty_payment_details, c_error_message_empty_payment_details);
-    when e_empty_field_id then
-      raise_application_error(c_error_code_empty_field_id, c_error_message_empty_field_id);
-    when e_empty_field_value then
-      raise_application_error(c_error_code_empty_field_value, c_error_message_empty_field_value);
+    when common_pack.e_empty_payment_details then
+      raise_application_error(common_pack.c_error_code_empty_payment_details,
+                              common_pack.c_error_message_empty_payment_details);
+    when common_pack.e_empty_field_id then
+      raise_application_error(common_pack.c_error_code_empty_field_id, common_pack.c_error_message_empty_field_id);
+    when common_pack.e_empty_field_value then
+      raise_application_error(common_pack.c_error_code_empty_field_value,
+                              common_pack.c_error_message_empty_field_value);
   end;
 
-----------------------------------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------------------------------
   --Добавление деталей платежа
-  procedure insert_payment_detail(p_payment_id payment.payment_id%type, p_payment_details t_payment_detail_array) is
+  procedure insert_payment_detail(p_payment_id in payment.payment_id%type,
+                                  p_payment_details in t_payment_detail_array) is
   begin
     g_is_api := true;
 
@@ -54,9 +58,8 @@ create or replace package body payment_detail_api_pack is
 
   ----------------------------------------------------------------------------------------------------------------------
   --Данные платежа добавлены или обновлены.
-  procedure insert_or_update_payment_detail(p_payment_id payment.payment_id%type,
-                                            p_payment_details t_payment_detail_array) is
-    v_current_date timestamp(2) := sysdate; --Дата операции
+  procedure insert_or_update_payment_detail(p_payment_id in payment.payment_id%type,
+                                            p_payment_details in t_payment_detail_array) is
   begin
     --Проверка наличия платежа в базе данных
     payment_api_pack.check_payment_exists(p_payment_id);
@@ -78,11 +81,6 @@ create or replace package body payment_detail_api_pack is
       values (p_payment_id, b.field_id, b.field_value);
 
     g_is_api := false;
-
-    dbms_output.put_line('Дата операции: ' || to_char(v_current_date, 'DL HH:MI:SS:AM'));
-    dbms_output.put_line(
-      'Данные платежа добавлены или обновлены по списку id_поля/значение');
-    dbms_output.put_line('ID объекта: ' || to_char(p_payment_id));
   exception
     when others then
       g_is_api := false;
@@ -91,8 +89,8 @@ create or replace package body payment_detail_api_pack is
 
   ------------------------------------------------------------------------------------------------------------------------
   --Детали платежа удалены.
-  procedure delete_payment_detail(p_payment_id payment.payment_id%type, p_payment_detail_field_ids t_number_array) is
-    v_current_date timestamp(2) := sysdate; --Дата операции
+  procedure delete_payment_detail(p_payment_id in payment.payment_id%type,
+                                  p_payment_detail_field_ids in t_number_array) is
     v_deleted_field_ids t_number_array := t_number_array(); --Коллекция удаленных деталей платежа
   begin
     --Проверка наличия платежа в базе данных
@@ -106,11 +104,6 @@ create or replace package body payment_detail_api_pack is
     bulk collect into v_deleted_field_ids;
 
     g_is_api := false;
-
-    dbms_output.put_line('Дата операции: ' || to_char(v_current_date, 'YYYYMMHH_HH24MISS'));
-    dbms_output.put_line('Детали платежа удалены по списку id_полей');
-    dbms_output.put_line('ID объекта: ' || to_char(p_payment_id));
-    dbms_output.put_line('Кол-во удаленных полей: ' || to_char(v_deleted_field_ids.count));
   exception
     when others then
       g_is_api := false;
