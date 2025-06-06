@@ -2,7 +2,7 @@
   before insert or update
   on payment
   for each row
-declare
+declare 
   v_systimestamp timestamp := systimestamp;
 begin
   if inserting then
