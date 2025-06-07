@@ -6,20 +6,21 @@ create or replace package payment_api_pack is
   -- 25.05.2025. ДЗ14. Добавлены исключения.
   -- 31.05.2025. ДЗ15. Добавлен флаг использования API и запрет на прямые DML-операции с таблицей PAYMENT.
   -- 04.06.2025. ДЗ16. Константы и исключения перенесены в COMMON_PAСK. Убраны лишние переменные и вывод в output
+  -- 07.06.2025. ДЗ17. Учтены замечания по ДЗ16.
+  --                   Добавлена процедура блокировка платежа try_lock_payment.
+  --                   Процедуры check_payment_exists и check_payment_status удалены, их функционал теперь в try_lock_payment.
+  --                   Процедура check_delete переименована в deleting_restriction.  
   ---------------------------------------------------------------------------------------------------------------------
   --МЕТОДЫ:
-  
-  --Проверка на внесение изменений через API
-  procedure api_restiction;  
-  
-  --Проверка наличия платежа в базе данных
-  procedure check_payment_exists(p_payment_id payment.payment_id%type);
 
-  --Проверка наличия платежа и его статуса
-  procedure check_payment_status(p_payment_id payment.payment_id%type, p_status payment.status%type);
-  
-  --Проверка на возможность удаления платежа
-  procedure check_delete;
+  --Проверка на внесение изменений через API
+  procedure api_restiction;
+
+  --Запрет на удаление платежей через API
+  procedure deleting_restriction;
+
+  --Блокировка платежа
+  procedure try_lock_payment(p_payment_id in payment.payment_id%type);
 
   --Создание платежа.
   function create_payment(p_create_dtime payment.create_dtime%type,

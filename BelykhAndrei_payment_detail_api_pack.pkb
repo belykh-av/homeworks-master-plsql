@@ -6,7 +6,8 @@ create or replace package body payment_detail_api_pack is
   --Проверка на внесение изменений через API
   procedure api_restiction is
   begin
-    if not g_is_api then
+    --Проверка локального API срабатывает, если установлен глобальный API
+    if common_pack.is_api and not g_is_api then
       raise_application_error(common_pack.c_error_code_payment_detail_api_restriction,
                               common_pack.c_error_message_payment_detail_api_restriction);
     end if;
@@ -45,6 +46,9 @@ create or replace package body payment_detail_api_pack is
   begin
     g_is_api := true;
 
+    --Проверить и заблокировать платеж
+    payment_api_pack.try_lock_payment(p_payment_id);
+
     insert into payment_detail(payment_id, field_id, field_value)
       select p_payment_id, pd.field_id, pd.field_value
       from table(p_payment_details) pd;
@@ -61,11 +65,11 @@ create or replace package body payment_detail_api_pack is
   procedure insert_or_update_payment_detail(p_payment_id in payment.payment_id%type,
                                             p_payment_details in t_payment_detail_array) is
   begin
-    --Проверка наличия платежа в базе данных
-    payment_api_pack.check_payment_exists(p_payment_id);
-
-    --Провека коллекци и на пустые поля коллекции
+    --Провека коллекци
     check_payment_details(p_payment_details);
+
+    --Проверить и заблокировать платеж
+    payment_api_pack.try_lock_payment(p_payment_id);
 
     g_is_api := true;
 
@@ -93,8 +97,8 @@ create or replace package body payment_detail_api_pack is
                                   p_payment_detail_field_ids in t_number_array) is
     v_deleted_field_ids t_number_array := t_number_array(); --Коллекция удаленных деталей платежа
   begin
-    --Проверка наличия платежа в базе данных
-    payment_api_pack.check_payment_exists(p_payment_id);
+    --Проверить и заблокировать платеж
+    payment_api_pack.try_lock_payment(p_payment_id);
 
     g_is_api := true;
 

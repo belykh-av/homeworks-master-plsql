@@ -3,7 +3,7 @@ create or replace package body common_pack is
   g_is_api boolean := true;
 
   ----------------------------------------------------------------------------------------------------------------------
-  --Включить использование API
+  --Включить использование глобального API
   procedure enable_api is
   begin
     if not g_is_api then
@@ -12,7 +12,7 @@ create or replace package body common_pack is
   end;
 
   ----------------------------------------------------------------------------------------------------------------------
-  --Выключить использование API
+  --Выключить использование глобального API
   procedure disable_api is
   begin
     if g_is_api then
@@ -21,11 +21,10 @@ create or replace package body common_pack is
   end;
 
   ----------------------------------------------------------------------------------------------------------------------
-  --Получить флаг использования API
+  --Получить флаг использования глобального API
   function is_api
     return boolean is
   begin
     return g_is_api;
   end;
-
 end common_pack;
