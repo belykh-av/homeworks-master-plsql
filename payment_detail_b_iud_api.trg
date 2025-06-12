@@ -2,7 +2,5 @@
   before insert or update or delete
   on payment_detail
 begin
-  if common_pack.is_api then
-    payment_detail_api_pack.api_restiction;
-  end if;
+  payment_detail_api_pack.api_restiction;
 end;

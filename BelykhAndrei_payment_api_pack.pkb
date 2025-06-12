@@ -6,84 +6,57 @@ create or replace package body payment_api_pack is
   --Проверка на внесение изменений через API
   procedure api_restiction is
   begin
-    if not g_is_api then
+    --Проверка локального API срабатывает, если установлен глобальный API
+    if common_pack.is_api and not g_is_api then
       raise_application_error(common_pack.c_error_code_payment_api_restriction,
                               common_pack.c_error_message_payment_api_restriction);
     end if;
   end;
 
   ----------------------------------------------------------------------------------------------------------------------
-  --Проверка наличия платежа
-  procedure check_payment_exists(p_payment_id in payment.payment_id%type) is
-    v_payment_id payment.payment_id%type;
+  --Запрет на удаление платежей через API
+  procedure deleting_restriction is
   begin
-    if p_payment_id is null then
-      raise common_pack.e_empty_payment_id;
+    --Если установлен глобальный API, то запретить удаление платежей
+    if common_pack.is_api then
+      raise_application_error(common_pack.c_error_code_deleting_restriction,
+                              common_pack.c_error_message_deleting_restriction);
     end if;
-
-    --Найти платеж
-    select max(payment_id)
-    into v_payment_id
-    from payment
-    where payment_id = p_payment_id;
-
-    if v_payment_id is null then
-      raise common_pack.e_payment_not_found;
-    end if;
-  exception
-    when common_pack.e_empty_payment_id then
-      raise_application_error(common_pack.c_error_code_empty_payment_id, common_pack.c_error_message_empty_payment_id);
-    when common_pack.e_payment_not_found then
-      raise_application_error(common_pack.c_error_code_payment_not_found,
-                              common_pack.c_error_message_payment_not_found);
   end;
 
   ----------------------------------------------------------------------------------------------------------------------
-  --Проверка наличия платежа и его статуса
-  procedure check_payment_status(p_payment_id in payment.payment_id%type, p_status in payment.status%type) is
+  --Блокировка платежа
+  procedure try_lock_payment(p_payment_id in payment.payment_id%type) is
     v_payment_id payment.payment_id%type;
     v_status payment.status%type;
   begin
+    --Не задан ID платежа
     if p_payment_id is null then
-      raise common_pack.e_empty_payment_id;
+      --raise common_pack.e_empty_payment_id;
+      raise_application_error(common_pack.c_error_code_empty_payment_id, common_pack.c_error_message_empty_payment_id);
     end if;
 
-    if p_status is null then
-      raise common_pack.e_empty_status;
-    end if;
-
-    --Найти платеж и его статус
-    select max(payment_id), max(status)
+    --Получить необходимые поля платежа и заблокировать его
+    select t.payment_id, t.status
     into v_payment_id, v_status
-    from payment
-    where payment_id = p_payment_id;
+    from payment t
+    where t.payment_id = p_payment_id
+    for update nowait;
 
-    if v_payment_id is null then
-      raise common_pack.e_payment_not_found;
-    end if;
-
-    if v_status <> p_status then
-      raise common_pack.e_payment_status_error;
+    --Если платеж в финальном статусе (любой кроме "created"), то ошибка - операции с ним проводить нельзя
+    if v_status <> common_pack.c_status_created then
+      raise_application_error(common_pack.c_error_code_payment_in_final_status,
+                              common_pack.c_error_message_payment_in_final_status);
     end if;
   exception
-    when common_pack.e_empty_payment_id then
-      raise_application_error(common_pack.c_error_code_empty_payment_id, common_pack.c_error_message_empty_payment_id);
-    when common_pack.e_empty_status then
-      raise_application_error(common_pack.c_error_code_empty_status, common_pack.c_error_message_empty_status);
-    when common_pack.e_payment_not_found then
+    when no_data_found then
+      --Не найден заданный платеж в базе
       raise_application_error(common_pack.c_error_code_payment_not_found,
                               common_pack.c_error_message_payment_not_found);
-    when common_pack.e_payment_status_error then
-      raise_application_error(common_pack.c_error_code_status_error, common_pack.c_error_message_status_error);
-  end;
-
-  ----------------------------------------------------------------------------------------------------------------------
-  --Проверка на возможность удаления платежа
-  procedure check_delete is
-  begin
-    --Запретить удаление
-    raise_application_error(common_pack.c_error_code_delete_restriction,
-                            common_pack.c_error_message_delete_restriction);
+    when common_pack.e_system_resource_busy then
+      --Объект уже заблокирован
+      raise_application_error(common_pack.c_error_code_payment_is_locked,
+                              common_pack.c_error_message_payment_is_locked);
   end;
 
   ----------------------------------------------------------------------------------------------------------------------
@@ -137,8 +110,8 @@ create or replace package body payment_api_pack is
       raise common_pack.e_empty_status_change_reason;
     end if;
 
-    --Проверить, что платеж существует и находится в статусе "Создан"
-    check_payment_status(p_payment_id, common_pack.c_status_created);
+    --Проверить и заблокировать платеж
+    try_lock_payment(p_payment_id);
 
     g_is_api := true;
 
@@ -166,8 +139,8 @@ create or replace package body payment_api_pack is
       raise common_pack.e_empty_status_change_reason;
     end if;
 
-    --Проверить, что платеж существует и находится в статусе "Создан"
-    check_payment_status(p_payment_id, common_pack.c_status_created);
+    --Проверить и заблокировать платеж
+    try_lock_payment(p_payment_id);
 
     g_is_api := true;
 
@@ -189,8 +162,8 @@ create or replace package body payment_api_pack is
   --Успешное завершение платежа.
   procedure successful_finish_payment(p_payment_id in payment.payment_id%type) is
   begin
-    --Проверить, что платеж существует и находится в статусе "Создан"
-    check_payment_status(p_payment_id, common_pack.c_status_created);
+    --Проверить и заблокировать платеж
+    try_lock_payment(p_payment_id);
 
     g_is_api := true;
 

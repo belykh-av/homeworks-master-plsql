@@ -3,7 +3,5 @@
   on payment
   for each row
 begin
-  if common_pack.is_api then
-    payment_api_pack.check_delete;
-  end if;
+  payment_api_pack.deleting_restriction;  
 end;
