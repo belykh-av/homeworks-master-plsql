@@ -3,6 +3,7 @@ CREATE OR REPLACE PACKAGE ut_common_pack is
   -- Описание: Общий пакет для юнит-тестов.
   -- Автор: Белых Андрей
   -- 13.06.2025. Создано в ДЗ18
+  -- 29.06.2025. Изменено в ДЗ19. Добавлена глобальная переменная g_payment_id и процедуры ее заполнения
   ---------------------------------------------------------------------------------------------------------------------
   --КОНСТАНТЫ:
 
@@ -19,6 +20,13 @@ CREATE OR REPLACE PACKAGE ut_common_pack is
   --ИСКЛЮЧЕНИЯ:
   e_ut_failed exception; --Unit-тест или API выполнены не верно
   pragma exception_init(e_ut_failed , c_error_code_ut_failed);
+
+
+  --ПЕРЕМЕННЫЕ:
+  g_payment_id payment.payment_id%type; --ID созданного платежа
+
+
+  --ПРОЦЕДУРЫ И ФУНКЦИИ:
 
   --Сгенерировать случайное значение детали платежа "Клиентское ПО"
   function get_random_payment_detail_client_software
@@ -47,6 +55,12 @@ CREATE OR REPLACE PACKAGE ut_common_pack is
   --Создать случайный платеж со случайными деталями
   function create_random_payment_with_random_details
     return payment.payment_id%type;
+
+  --Создать платеж по умолчанию и сохранить его в шлобальной переменной
+  procedure create_default_payment;
+
+  --Найти в базе случаный платеж не в статусе "Создан" и записать его в глобальну переменную
+  procedure get_payment_in_no_created_status;
 
   --Сгенерировать случайное значение суммы платежа
   function get_random_payment_summa

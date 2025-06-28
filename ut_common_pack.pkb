@@ -38,10 +38,7 @@ CREATE OR REPLACE PACKAGE BODY ut_common_pack is
   begin
     for r in (select count(1) as cnt
               from currency) loop
-      --dbms_output.put_line(r.cnt);
       v_rownum := round(dbms_random.value(1, r.cnt));
-
-      --dbms_output.put_line(v_rownum);
 
       select currency_id
       into v_currency_id
@@ -105,6 +102,29 @@ CREATE OR REPLACE PACKAGE BODY ut_common_pack is
                                                     get_random_payment_detail_ip()),
                                    t_payment_detail(common_pack.c_payment_detail_field_id_note,
                                                     get_random_payment_detail_note())));
+  end;
+
+
+  ---------------------------------------------------------------------------------------------------------------------
+  --Создать платеж по умолчанию и сохранить его в шлобальной переменной
+  procedure create_default_payment is
+  begin
+    g_payment_id := create_random_payment_with_random_details();
+  end;
+
+  ---------------------------------------------------------------------------------------------------------------------
+  --Найти в базе случаный платеж не в статусе "Создан" и записать его в глобальну переменную
+  procedure get_payment_in_no_created_status is
+  begin
+    select max(payment_id)
+    into g_payment_id
+    from payment
+    where status <> common_pack.c_status_created and rownum = 1;
+
+    --Тестовый API
+    if g_payment_id is null then
+      raise_application_error(-20999, 'В базе нет платежей не в статусе "Создан"');
+    end if;
   end;
 
   ---------------------------------------------------------------------------------------------------------------------
