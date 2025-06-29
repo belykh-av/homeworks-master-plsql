@@ -1,4 +1,4 @@
-create or replace package body payment_api_pack is
+﻿CREATE OR REPLACE PACKAGE BODY payment_api_pack is
   --Флаг использования API для венения изменений в таблицу payment
   g_is_api boolean := false;
 
@@ -8,8 +8,7 @@ create or replace package body payment_api_pack is
   begin
     --Проверка локального API срабатывает, если установлен глобальный API
     if common_pack.is_api and not g_is_api then
-      raise_application_error(common_pack.c_error_code_payment_api_restriction,
-                              common_pack.c_error_message_payment_api_restriction);
+      raise_application_error(c_error_code_payment_api_restriction, c_error_message_payment_api_restriction);
     end if;
   end;
 
@@ -19,8 +18,7 @@ create or replace package body payment_api_pack is
   begin
     --Если установлен глобальный API, то запретить удаление платежей
     if common_pack.is_api then
-      raise_application_error(common_pack.c_error_code_deleting_restriction,
-                              common_pack.c_error_message_deleting_restriction);
+      raise_application_error(c_error_code_deleting_restriction, c_error_message_deleting_restriction);
     end if;
   end;
 
@@ -33,7 +31,7 @@ create or replace package body payment_api_pack is
     --Не задан ID платежа
     if p_payment_id is null then
       --raise common_pack.e_empty_payment_id;
-      raise_application_error(common_pack.c_error_code_empty_payment_id, common_pack.c_error_message_empty_payment_id);
+      raise_application_error(c_error_code_empty_payment_id, c_error_message_empty_payment_id);
     end if;
 
     --Получить необходимые поля платежа и заблокировать его
@@ -44,19 +42,16 @@ create or replace package body payment_api_pack is
     for update nowait;
 
     --Если платеж в финальном статусе (любой кроме "created"), то ошибка - операции с ним проводить нельзя
-    if v_status <> common_pack.c_status_created then
-      raise_application_error(common_pack.c_error_code_payment_in_final_status,
-                              common_pack.c_error_message_payment_in_final_status);
+    if v_status <> c_status_created then
+      raise_application_error(c_error_code_payment_in_final_status, c_error_message_payment_in_final_status);
     end if;
   exception
     when no_data_found then
       --Не найден заданный платеж в базе
-      raise_application_error(common_pack.c_error_code_payment_not_found,
-                              common_pack.c_error_message_payment_not_found);
+      raise_application_error(c_error_code_payment_not_found, c_error_message_payment_not_found);
     when common_pack.e_system_resource_busy then
       --Объект уже заблокирован
-      raise_application_error(common_pack.c_error_code_payment_is_locked,
-                              common_pack.c_error_message_payment_is_locked);
+      raise_application_error(c_error_code_payment_is_locked, c_error_message_payment_is_locked);
   end;
 
   ----------------------------------------------------------------------------------------------------------------------
@@ -84,7 +79,7 @@ create or replace package body payment_api_pack is
                p_currency_id,
                p_from_client_id,
                p_to_client_id,
-               common_pack.c_status_created)
+               c_status_created)
     returning payment_id
     into v_payment_id;
 
@@ -104,10 +99,10 @@ create or replace package body payment_api_pack is
   --Сброс платежа в "ошибочный статус".
   procedure fail_payment(
     p_payment_id in payment.payment_id%type,
-    p_status_change_reason in payment.status_change_reason%type := common_pack.c_status_change_reason_no_money) is
+    p_status_change_reason in payment.status_change_reason%type := c_status_change_reason_no_money) is
   begin
     if p_status_change_reason is null then
-      raise common_pack.e_empty_status_change_reason;
+      raise e_empty_status_change_reason;
     end if;
 
     --Проверить и заблокировать платеж
@@ -116,14 +111,13 @@ create or replace package body payment_api_pack is
     g_is_api := true;
 
     update payment
-    set status = common_pack.c_status_failed, status_change_reason = p_status_change_reason
+    set status = c_status_failed, status_change_reason = p_status_change_reason
     where payment_id = p_payment_id;
 
     g_is_api := false;
   exception
-    when common_pack.e_empty_status_change_reason then
-      raise_application_error(common_pack.c_error_code_empty_status_change_reason,
-                              common_pack.c_error_message_empty_status_change_reason);
+    when e_empty_status_change_reason then
+      raise_application_error(c_error_code_empty_status_change_reason, c_error_message_empty_status_change_reason);
     when others then
       g_is_api := false;
       raise;
@@ -133,10 +127,10 @@ create or replace package body payment_api_pack is
   --Отмена платежа.
   procedure cancel_payment(
     p_payment_id in payment.payment_id%type,
-    p_status_change_reason in payment.status_change_reason%type := common_pack.c_status_change_reason_user_error) is
+    p_status_change_reason in payment.status_change_reason%type := c_status_change_reason_user_error) is
   begin
     if p_status_change_reason is null then
-      raise common_pack.e_empty_status_change_reason;
+      raise e_empty_status_change_reason;
     end if;
 
     --Проверить и заблокировать платеж
@@ -145,14 +139,14 @@ create or replace package body payment_api_pack is
     g_is_api := true;
 
     update payment
-    set status = common_pack.c_status_canceled, status_change_reason = p_status_change_reason
+    set status = c_status_canceled, status_change_reason = p_status_change_reason
     where payment_id = p_payment_id;
 
     g_is_api := false;
   exception
-    when common_pack.e_empty_status_change_reason then
-      raise_application_error(common_pack.c_error_code_empty_status_change_reason,
-                              common_pack.c_error_message_empty_status_change_reason);
+    when e_empty_status_change_reason then
+      g_is_api := false;
+      raise_application_error(c_error_code_empty_status_change_reason, c_error_message_empty_status_change_reason);
     when others then
       g_is_api := false;
       raise;
@@ -168,7 +162,7 @@ create or replace package body payment_api_pack is
     g_is_api := true;
 
     update payment
-    set status = common_pack.c_status_completed
+    set status = c_status_completed
     where payment_id = p_payment_id;
 
     g_is_api := false;
@@ -177,4 +171,23 @@ create or replace package body payment_api_pack is
       g_is_api := false;
       raise;
   end;
+
+  ---------------------------------------------------------------------------------------------------------------------
+  --Получить данные о платеже
+  function get_payment_record(p_payment_id in payment.payment_id%type := null)
+    return payment%rowtype is
+    v_payment payment%rowtype;
+  begin
+    select *
+    into v_payment
+    from payment
+    where payment_id = p_payment_id;
+
+    return v_payment;
+  exception
+    when no_data_found then
+      --Не найден заданный платеж в базе
+      raise_application_error(c_error_code_payment_not_found, c_error_message_payment_not_found);
+  end;
 end;
+/

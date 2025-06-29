@@ -1,4 +1,6 @@
-CREATE OR REPLACE PACKAGE BODY ut_common_pack is
+﻿CREATE OR REPLACE PACKAGE BODY ut_common_pack is
+  g_payment_id payment.payment_id%type; --ID созданного платежа
+
   ---------------------------------------------------------------------------------------------------------------------
   --Сгенерировать случайное значение детали платежа "Клиентское ПО"
   function get_random_payment_detail_client_software
@@ -72,59 +74,56 @@ CREATE OR REPLACE PACKAGE BODY ut_common_pack is
   end;
 
   ---------------------------------------------------------------------------------------------------------------------
-  --Создать случайный платеж с заданными деталями
-  function create_random_payment(p_payment_details in t_payment_detail_array)
-    return payment.payment_id%type is
-  begin
-    return payment_api_pack.create_payment(p_create_dtime => systimestamp,
-                                           p_from_client_id => create_random_client(),
-                                           p_to_client_id => create_random_client(),
-                                           p_summa => get_random_payment_summa(),
-                                           p_currency_id => get_random_currency_id,
-                                           p_payment_details => p_payment_details);
-  end;
-
-  ---------------------------------------------------------------------------------------------------------------------
-  --Создать случайный платеж со случайными деталями
-  function create_random_payment_with_random_details
-    return payment.payment_id%type is
-  begin
-    return payment_api_pack.create_payment(
-             p_create_dtime => systimestamp,
-             p_from_client_id => create_random_client(),
-             p_to_client_id => create_random_client(),
-             p_summa => get_random_payment_summa(),
-             p_currency_id => get_random_currency_id,
-             p_payment_details => t_payment_detail_array(
-                                   t_payment_detail(common_pack.c_payment_detail_field_id_client_software,
-                                                    get_random_payment_detail_client_software()),
-                                   t_payment_detail(common_pack.c_payment_detail_field_id_ip,
-                                                    get_random_payment_detail_ip()),
-                                   t_payment_detail(common_pack.c_payment_detail_field_id_note,
-                                                    get_random_payment_detail_note())));
-  end;
-
-
-  ---------------------------------------------------------------------------------------------------------------------
-  --Создать платеж по умолчанию и сохранить его в шлобальной переменной
+  --Создать платеж по умолчанию с деталями по умолчанию и сохранить его в глобальной переменной
   procedure create_default_payment is
   begin
-    g_payment_id := create_random_payment_with_random_details();
+    g_payment_id := payment_api_pack.create_payment(
+                      p_create_dtime => systimestamp,
+                      p_from_client_id => create_random_client(),
+                      p_to_client_id => create_random_client(),
+                      p_summa => get_random_payment_summa(),
+                      p_currency_id => get_random_currency_id,
+                      p_payment_details => t_payment_detail_array(
+                                            t_payment_detail(
+                                              payment_detail_api_pack.c_payment_detail_field_id_client_software,
+                                              get_random_payment_detail_client_software()),
+                                            t_payment_detail(payment_detail_api_pack.c_payment_detail_field_id_ip,
+                                                             get_random_payment_detail_ip()),
+                                            t_payment_detail(payment_detail_api_pack.c_payment_detail_field_id_note,
+                                                             get_random_payment_detail_note())));
   end;
 
   ---------------------------------------------------------------------------------------------------------------------
-  --Найти в базе случаный платеж не в статусе "Создан" и записать его в глобальну переменную
-  procedure get_payment_in_no_created_status is
+  --Создать платеж по умолчанию с указаннми деталями и сохранить его в глобальной переменной
+  procedure create_default_payment(p_payment_details in t_payment_detail_array) is
   begin
-    select max(payment_id)
-    into g_payment_id
-    from payment
-    where status <> common_pack.c_status_created and rownum = 1;
+    g_payment_id := payment_api_pack.create_payment(p_create_dtime => systimestamp,
+                                                    p_from_client_id => create_random_client(),
+                                                    p_to_client_id => create_random_client(),
+                                                    p_summa => get_random_payment_summa(),
+                                                    p_currency_id => get_random_currency_id,
+                                                    p_payment_details => p_payment_details);
+  end;
 
-    --Тестовый API
-    if g_payment_id is null then
-      raise_application_error(-20999, 'В базе нет платежей не в статусе "Создан"');
+  ---------------------------------------------------------------------------------------------------------------------
+  --Получить ID платежа, созданного в setup-процедуре
+  function get_default_payment_id
+    return payment.payment_id%type is
+    v_payment_id payment.payment_id%type;
+  begin
+    --Проверить, если ли платеж в базе, т.к. перед тестом могли не запустить setup-процедуру создания платежа
+    select max(payment_id)
+    into v_payment_id
+    from payment
+    where payment_id = g_payment_id;
+
+    if v_payment_id is null then
+      raise_application_error(
+        -20999,
+        'Платеж PAYMENT_ID=' || g_payment_id || ' отсутствует в базе данных');
     end if;
+
+    return v_payment_id;
   end;
 
   ---------------------------------------------------------------------------------------------------------------------
@@ -142,8 +141,8 @@ CREATE OR REPLACE PACKAGE BODY ut_common_pack is
   exception
     when no_data_found then
       --Не найден заданный платеж в базе
-      raise_application_error(common_pack.c_error_code_payment_not_found,
-                              common_pack.c_error_message_payment_not_found);
+      raise_application_error(payment_api_pack.c_error_code_payment_not_found,
+                              payment_api_pack.c_error_message_payment_not_found);
   end;
 
   ---------------------------------------------------------------------------------------------------------------------
@@ -169,3 +168,4 @@ CREATE OR REPLACE PACKAGE BODY ut_common_pack is
     raise_application_error(c_error_code_ut_failed, c_error_message_ut_failed);
   end;
 end;
+/

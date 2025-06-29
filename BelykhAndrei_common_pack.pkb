@@ -1,4 +1,4 @@
-create or replace package body common_pack is
+﻿CREATE OR REPLACE PACKAGE BODY common_pack is
   --Флаг использования глобального API для венения прямых изменений в таблицы
   g_is_api boolean := true;
 
@@ -28,3 +28,4 @@ create or replace package body common_pack is
     return g_is_api;
   end;
 end common_pack;
+/
