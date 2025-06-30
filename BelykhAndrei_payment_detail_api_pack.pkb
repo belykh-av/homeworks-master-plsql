@@ -1,4 +1,4 @@
-create or replace package body payment_detail_api_pack is
+﻿CREATE OR REPLACE PACKAGE BODY payment_detail_api_pack is
   --Флаг использования API для венения изменений в таблицу payment_detail
   g_is_api boolean := false;
 
@@ -8,8 +8,8 @@ create or replace package body payment_detail_api_pack is
   begin
     --Проверка локального API срабатывает, если установлен глобальный API
     if common_pack.is_api and not g_is_api then
-      raise_application_error(common_pack.c_error_code_payment_detail_api_restriction,
-                              common_pack.c_error_message_payment_detail_api_restriction);
+      raise_application_error(c_error_code_payment_detail_api_restriction,
+                              c_error_message_payment_detail_api_restriction);
     end if;
   end;
 
@@ -18,25 +18,23 @@ create or replace package body payment_detail_api_pack is
   procedure check_payment_details(p_payment_details in t_payment_detail_array) is
   begin
     if p_payment_details is empty then
-      raise common_pack.e_empty_payment_details;
+      raise e_empty_payment_details;
     end if;
 
     for i in p_payment_details.first .. p_payment_details.last loop
       if p_payment_details(i).field_id is null then
-        raise common_pack.e_empty_field_id;
+        raise e_empty_field_id;
       elsif p_payment_details(i).field_value is null then
-        raise common_pack.e_empty_field_value;
+        raise e_empty_field_value;
       end if;
     end loop;
   exception
-    when common_pack.e_empty_payment_details then
-      raise_application_error(common_pack.c_error_code_empty_payment_details,
-                              common_pack.c_error_message_empty_payment_details);
-    when common_pack.e_empty_field_id then
-      raise_application_error(common_pack.c_error_code_empty_field_id, common_pack.c_error_message_empty_field_id);
-    when common_pack.e_empty_field_value then
-      raise_application_error(common_pack.c_error_code_empty_field_value,
-                              common_pack.c_error_message_empty_field_value);
+    when e_empty_payment_details then
+      raise_application_error(c_error_code_empty_payment_details, c_error_message_empty_payment_details);
+    when e_empty_field_id then
+      raise_application_error(c_error_code_empty_field_id, c_error_message_empty_field_id);
+    when e_empty_field_value then
+      raise_application_error(c_error_code_empty_field_value, c_error_message_empty_field_value);
   end;
 
   ----------------------------------------------------------------------------------------------------------------------
@@ -114,3 +112,4 @@ create or replace package body payment_detail_api_pack is
       raise;
   end;
 end;
+/

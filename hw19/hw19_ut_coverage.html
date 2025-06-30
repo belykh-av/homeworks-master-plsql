@@ -1,0 +1,2730 @@
+COLUMN_VALUE                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<!DOCTYPE html><html xmlns='http://www.w3.org/1999/xhtml'><head><title>Code coverage</title><meta http-equiv="content-type" content="text/html; charset=UTF-8" /><script src='https://utplsql.github.io/utPLSQL-coverage-html/assets/application.js'></script><link href='https://utplsql.github.io/utPLSQL-coverage-html/assets/application.css' media='screen, print' rel='stylesheet' type='text/css'/><link rel="shortcut icon" type="image/png" href="https://utplsql.github.io/utPLSQL-coverage-html/assets/favicon_red.png" /><link rel="icon" type="image/png" href="https://utplsql.github.io/utPLSQL-coverage-html/assets/favicon_red.png" /></head><body><div id="loading"><img src="https://utplsql.github.io/utPLSQL-coverage-html/assets/loading.gif" alt="loading"/></div><div id="wrapper" style="display:none;"><div class="timestamp">Generated <abbr class="timeago" title="2025-06-29T20:46:23">2025-06-29T20:46:23</abbr></div><ul class="group_tabs"></ul><div id="content">
+<div class="file_list_container" id="991716A5FE7B1B4DB80E6C06908178EB"><h2><span class="group_name">All files</span> (<span class="covered_percent"><span class="red">25,27%</span></span> lines covered at <span class="covered_strength"><span class="green">4</span></span> hits/line)</h2><a id="a_991716A5FE7B1B4DB80E6C06908178EB"></a><div><b>15</b> files in total. </div><div><b>455</b> relevant lines. <span class="green"><b>115</b> lines covered</span> and <span class="red"><b>340</b> lines missed.</span><table class="file_list"><thead><tr><th>File</th><th>% covered</th><th>Lines</th><th>Relevant Lines</th><th>Lines covered</th><th>Lines missed</th><th>Avg. Hits / Line </th></tr></thead><tbody>
+
+<tr><td class="strong"><a href="#CC09089D3BDB1E56178F943E75F38235" class="src_link" title="function plsql14_student6.create_payment">function plsql14_student6.create_payment</a></td><td class="red strong">0 %</td><td>66</td><td>66</td><td>0</td><td>66</td><td>0</td></tr>
+
+<tr><td class="strong"><a href="#52E5F4D0B10144E642F36242766AEDD9" class="src_link" title="package body plsql14_student6.common_pack">package body plsql14_student6.common_pack</a></td><td class="green strong">100 %</td><td>30</td><td>6</td><td>6</td><td>0</td><td>16</td></tr>
+
+<tr><td class="strong"><a href="#5FC610161FDB287D8811438BDBFB2AF0" class="src_link" title="package body plsql14_student6.payment_api_pack">package body plsql14_student6.payment_api_pack</a></td><td class="green strong">90,74 %</td><td>192</td><td>54</td><td>49</td><td>5</td><td>8</td></tr>
+
+<tr><td class="strong"><a href="#4D8C2DD782D72A75C26A4D5103918659" class="src_link" title="package body plsql14_student6.payment_detail_api_pack">package body plsql14_student6.payment_detail_api_pack</a></td><td class="yellow strong">84,62 %</td><td>114</td><td>39</td><td>33</td><td>6</td><td>11</td></tr>
+
+<tr><td class="strong"><a href="#6E8228085538BF405D53AA885B137B94" class="src_link" title="package body plsql14_student6.ut_common_pack">package body plsql14_student6.ut_common_pack</a></td><td class="yellow strong">82,61 %</td><td>170</td><td>23</td><td>19</td><td>4</td><td>21</td></tr>
+
+<tr><td class="strong"><a href="#5E9B6E6F2F39265070591CCD6AAD8002" class="src_link" title="package body plsql14_student6.ut_utils_pack">package body plsql14_student6.ut_utils_pack</a></td><td class="red strong">0 %</td><td>59</td><td>59</td><td>0</td><td>59</td><td>0</td></tr>
+
+<tr><td class="strong"><a href="#F16B7A685B053B5914DE8BF62DF06B81" class="src_link" title="procedure plsql14_student6.cancel_payment">procedure plsql14_student6.cancel_payment</a></td><td class="red strong">0 %</td><td>36</td><td>36</td><td>0</td><td>36</td><td>0</td></tr>
+
+<tr><td class="strong"><a href="#C5B2158010F67B0DFF59C1CDF257F207" class="src_link" title="procedure plsql14_student6.delete_payment_detail">procedure plsql14_student6.delete_payment_detail</a></td><td class="red strong">0 %</td><td>27</td><td>27</td><td>0</td><td>27</td><td>0</td></tr>
+
+<tr><td class="strong"><a href="#E6246318A303365890DD4074E0A321CD" class="src_link" title="procedure plsql14_student6.fail_payment">procedure plsql14_student6.fail_payment</a></td><td class="red strong">0 %</td><td>38</td><td>38</td><td>0</td><td>38</td><td>0</td></tr>
+
+<tr><td class="strong"><a href="#B881BB9415404F29514A1C28CD1B3F79" class="src_link" title="procedure plsql14_student6.insert_or_update_payment_detail">procedure plsql14_student6.insert_or_update_payment_detail</a></td><td class="red strong">0 %</td><td>66</td><td>66</td><td>0</td><td>66</td><td>0</td></tr>
+
+<tr><td class="strong"><a href="#1A417FF0AAF945F79CCC9533E07569A0" class="src_link" title="procedure plsql14_student6.successful_finish_payment">procedure plsql14_student6.successful_finish_payment</a></td><td class="red strong">0 %</td><td>33</td><td>33</td><td>0</td><td>33</td><td>0</td></tr>
+
+<tr><td class="strong"><a href="#AD7F0F457DE90625A454B6AC486406FA" class="src_link" title="trigger plsql14_student6.payment_b_d_restrict">trigger plsql14_student6.payment_b_d_restrict</a></td><td class="green strong">100 %</td><td>3</td><td>1</td><td>1</td><td>0</td><td>4</td></tr>
+
+<tr><td class="strong"><a href="#FCBB96D10AA927578678E5035FDF57EA" class="src_link" title="trigger plsql14_student6.payment_b_iu_api">trigger plsql14_student6.payment_b_iu_api</a></td><td class="green strong">100 %</td><td>3</td><td>1</td><td>1</td><td>0</td><td>38</td></tr>
+
+<tr><td class="strong"><a href="#BD0E7854D2B99306EEC40CC7C8C828BC" class="src_link" title="trigger plsql14_student6.payment_b_iu_tech_fields">trigger plsql14_student6.payment_b_iu_tech_fields</a></td><td class="green strong">100 %</td><td>9</td><td>5</td><td>5</td><td>0</td><td>31</td></tr>
+
+<tr><td class="strong"><a href="#D35E08B3B443B28561DC50F0BF5DBF44" class="src_link" title="trigger plsql14_student6.payment_detail_b_iud_api">trigger plsql14_student6.payment_detail_b_iud_api</a></td><td class="green strong">100 %</td><td>3</td><td>1</td><td>1</td><td>0</td><td>40</td></tr>
+</tbody></table></div>
+
+</div><div id="footer">Generated by <a href="http://github.com/utPLSQL/utPLSQL">utPLSQL v3.1.14.4206-develop</a><br/>Based on <a href="http://github.com/colszowka/simplecov-html">simplecov-html</a> v0.10.0 </div><div class="source_files">
+<div class="source_table" id="CC09089D3BDB1E56178F943E75F38235"><div class="header"> <h3>PLSQL14_STUDENT6.CREATE_PAYMENT</h3><h4><span class="red">0 %</span> lines covered</h4><div> <b>66</b> relevant lines. <span class="green"><b>0</b> lines covered</span> and <span class="red"><b>66</b> lines missed</span></div></div><pre><ol>
+
+            <li class="never" data-hits="" data-linenumber="1">
+            <code class="sql">function create_payment(p_create_dtime payment.create_dtime%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="2">
+            <code class="sql">                                          p_from_client_id payment.from_client_id%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="3">
+            <code class="sql">                                          p_to_client_id payment.to_client_id%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="4">
+            <code class="sql">                                          p_summa payment.summa%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="5">
+            <code class="sql">                                          p_currency_id payment.currency_id%type := 643,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="6">
+            <code class="sql">                                          p_payment_details t_payment_detail_array)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="7">
+            <code class="sql">  return payment.payment_id%type is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="8">
+            <code class="sql">  c_status_created constant payment.status%type := 0;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="9">
+            <code class="sql">  --ID полей данных деталей платежа:</code></li>
+
+            <li class="never" data-hits="" data-linenumber="10">
+            <code class="sql">  c_payment_detail_field_id_client_software constant payment_detail.field_id%type := 1; --Софт, через который совершался платеж</code></li>
+
+            <li class="never" data-hits="" data-linenumber="11">
+            <code class="sql">  c_payment_detail_field_id_ip constant payment_detail.field_id%type := 2; --IP адрес плательщика</code></li>
+
+            <li class="never" data-hits="" data-linenumber="12">
+            <code class="sql">  c_payment_detail_field_id_note constant payment_detail.field_id%type := 3; --Примечание к переводу</code></li>
+
+            <li class="never" data-hits="" data-linenumber="13">
+            <code class="sql">  c_payment_detail_field_id_is_checked constant payment_detail.field_id%type := 4; --Проверен ли платеж в системе &quot;АнтиФрод&quot;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="14">
+            <code class="sql">  --</code></li>
+
+            <li class="never" data-hits="" data-linenumber="15">
+            <code class="sql">  v_payment_id payment.payment_id%type := null; --ID созданного платежа</code></li>
+
+            <li class="never" data-hits="" data-linenumber="16">
+            <code class="sql">  v_current_dtime timestamp := systimestamp; --Дата операции</code></li>
+
+            <li class="never" data-hits="" data-linenumber="17">
+            <code class="sql">  v_is_error boolean := false; --Флаг ошибки проверки данных платежа</code></li>
+
+            <li class="never" data-hits="" data-linenumber="18">
+            <code class="sql">begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="19">
+            <code class="sql">  --Провека коллекции деталей платежа с установкой флага ошибки</code></li>
+
+            <li class="never" data-hits="" data-linenumber="20">
+            <code class="sql">  if p_payment_details is empty then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="21">
+            <code class="sql">    dbms_output.put_line(&apos;Коллекция не содержит данных&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="22">
+            <code class="sql">    v_is_error := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="23">
+            <code class="sql">  else</code></li>
+
+            <li class="never" data-hits="" data-linenumber="24">
+            <code class="sql">    for i in p_payment_details.first .. p_payment_details.last loop</code></li>
+
+            <li class="never" data-hits="" data-linenumber="25">
+            <code class="sql">      if p_payment_details(i).field_id is null then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="26">
+            <code class="sql">        dbms_output.put_line(&apos;Элемент коллекции №&apos; || to_char(i) || &apos;:&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="27">
+            <code class="sql">        dbms_output.put_line(&apos;ID поля не может быть пустым&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="28">
+            <code class="sql">        v_is_error := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="29">
+            <code class="sql">      elsif p_payment_details(i).field_value is null then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="30">
+            <code class="sql">        dbms_output.put_line(&apos;Элемент коллекции №&apos; || to_char(i) || &apos;:&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="31">
+            <code class="sql">        dbms_output.put_line(&apos;Значение в поле не может быть пустым&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="32">
+            <code class="sql">        v_is_error := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="33">
+            <code class="sql">      end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="34">
+            <code class="sql">    end loop;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="35">
+            <code class="sql">  end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="36">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="37">
+            <code class="sql">  --Создание платежа, если нет флага ошибки</code></li>
+
+            <li class="never" data-hits="" data-linenumber="38">
+            <code class="sql">  if not v_is_error then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="39">
+            <code class="sql">    insert into payment(payment_id, create_dtime, summa, currency_id, from_client_id, to_client_id, status)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="40">
+            <code class="sql">      values (</code></li>
+
+            <li class="never" data-hits="" data-linenumber="41">
+            <code class="sql">               payment_seq.nextval,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="42">
+            <code class="sql">               p_create_dtime,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="43">
+            <code class="sql">               p_summa,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="44">
+            <code class="sql">               p_currency_id,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="45">
+            <code class="sql">               p_from_client_id,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="46">
+            <code class="sql">               p_to_client_id,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="47">
+            <code class="sql">               c_status_created)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="48">
+            <code class="sql">    returning payment_id</code></li>
+
+            <li class="never" data-hits="" data-linenumber="49">
+            <code class="sql">    into v_payment_id;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="50">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="51">
+            <code class="sql">    --Создание деталей платежа</code></li>
+
+            <li class="never" data-hits="" data-linenumber="52">
+            <code class="sql">    insert into payment_detail(payment_id, field_id, field_value)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="53">
+            <code class="sql">      select v_payment_id, pd.field_id, pd.field_value</code></li>
+
+            <li class="never" data-hits="" data-linenumber="54">
+            <code class="sql">      from table(p_payment_details) pd;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="55">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="56">
+            <code class="sql">    --Сообщение об операции</code></li>
+
+            <li class="never" data-hits="" data-linenumber="57">
+            <code class="sql">    dbms_output.put_line(&apos;Дата операции: &apos; || to_char(v_current_dtime, &apos;DD.MM.YYYY HH24:MI:SS.FF&apos;));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="58">
+            <code class="sql">    dbms_output.put_line(&apos;Платеж создан. &apos; || &apos;Статус: &apos; || c_status_created);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="59">
+            <code class="sql">    dbms_output.put_line(&apos;ID объекта: &apos; || to_char(v_payment_id));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="60">
+            <code class="sql">  else</code></li>
+
+            <li class="never" data-hits="" data-linenumber="61">
+            <code class="sql">    dbms_output.put_line(&apos;Ошибка создания платежа&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="62">
+            <code class="sql">  end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="63">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="64">
+            <code class="sql">  dbms_output.put_line(&apos;&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="65">
+            <code class="sql">  return v_payment_id;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="66">
+            <code class="sql">end;</code></li>
+</ol></pre></div>
+<div class="source_table" id="52E5F4D0B10144E642F36242766AEDD9"><div class="header"> <h3>PLSQL14_STUDENT6.COMMON_PACK</h3><h4><span class="green">100 %</span> lines covered</h4><div> <b>6</b> relevant lines. <span class="green"><b>6</b> lines covered</span> and <span class="red"><b>0</b> lines missed</span></div></div><pre><ol>
+
+            <li class="never" data-hits="" data-linenumber="1">
+            <code class="sql">package body common_pack is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="2">
+            <code class="sql">  --Флаг использования глобального API для венения прямых изменений в таблицы</code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="3">
+              <span class="hits">1</span>
+              <code class="sql">  g_is_api boolean := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="4">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="5">
+            <code class="sql">  ----------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="6">
+            <code class="sql">  --Включить использование глобального API</code></li>
+
+            <li class="never" data-hits="" data-linenumber="7">
+            <code class="sql">  procedure enable_api is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="8">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="9">
+              <span class="hits">5</span>
+              <code class="sql">    if not g_is_api then</code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="10">
+              <span class="hits">5</span>
+              <code class="sql">      g_is_api := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="11">
+            <code class="sql">    end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="12">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="13">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="14">
+            <code class="sql">  ----------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="15">
+            <code class="sql">  --Выключить использование глобального API</code></li>
+
+            <li class="never" data-hits="" data-linenumber="16">
+            <code class="sql">  procedure disable_api is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="17">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="18">
+              <span class="hits">5</span>
+              <code class="sql">    if g_is_api then</code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="19">
+              <span class="hits">5</span>
+              <code class="sql">      g_is_api := false;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="20">
+            <code class="sql">    end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="21">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="22">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="23">
+            <code class="sql">  ----------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="24">
+            <code class="sql">  --Получить флаг использования глобального API</code></li>
+
+            <li class="never" data-hits="" data-linenumber="25">
+            <code class="sql">  function is_api</code></li>
+
+            <li class="never" data-hits="" data-linenumber="26">
+            <code class="sql">    return boolean is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="27">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="72" data-linenumber="28">
+              <span class="hits">72</span>
+              <code class="sql">    return g_is_api;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="29">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="30">
+            <code class="sql">end common_pack;</code></li>
+</ol></pre></div>
+<div class="source_table" id="5FC610161FDB287D8811438BDBFB2AF0"><div class="header"> <h3>PLSQL14_STUDENT6.PAYMENT_API_PACK</h3><h4><span class="green">90,74 %</span> lines covered</h4><div> <b>54</b> relevant lines. <span class="green"><b>49</b> lines covered</span> and <span class="red"><b>5</b> lines missed</span></div></div><pre><ol>
+
+            <li class="never" data-hits="" data-linenumber="1">
+            <code class="sql">PACKAGE BODY payment_api_pack is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="2">
+            <code class="sql">  --Флаг использования API для венения изменений в таблицу payment</code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="3">
+              <span class="hits">1</span>
+              <code class="sql">  g_is_api boolean := false;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="4">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="5">
+            <code class="sql">  ----------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="6">
+            <code class="sql">  --Проверка на внесение изменений через API</code></li>
+
+            <li class="never" data-hits="" data-linenumber="7">
+            <code class="sql">  procedure api_restiction is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="8">
+            <code class="sql">  begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="9">
+            <code class="sql">    --Проверка локального API срабатывает, если установлен глобальный API</code></li>
+
+            <li class="covered" data-hits="34" data-linenumber="10">
+              <span class="hits">34</span>
+              <code class="sql">    if common_pack.is_api and not g_is_api then</code></li>
+
+            <li class="covered" data-hits="2" data-linenumber="11">
+              <span class="hits">2</span>
+              <code class="sql">      raise_application_error(c_error_code_payment_api_restriction, c_error_message_payment_api_restriction);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="12">
+            <code class="sql">    end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="13">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="14">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="15">
+            <code class="sql">  ----------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="16">
+            <code class="sql">  --Запрет на удаление платежей через API</code></li>
+
+            <li class="never" data-hits="" data-linenumber="17">
+            <code class="sql">  procedure deleting_restriction is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="18">
+            <code class="sql">  begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="19">
+            <code class="sql">    --Если установлен глобальный API, то запретить удаление платежей</code></li>
+
+            <li class="covered" data-hits="2" data-linenumber="20">
+              <span class="hits">2</span>
+              <code class="sql">    if common_pack.is_api then</code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="21">
+              <span class="hits">1</span>
+              <code class="sql">      raise_application_error(c_error_code_deleting_restriction, c_error_message_deleting_restriction);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="22">
+            <code class="sql">    end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="23">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="24">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="25">
+            <code class="sql">  ----------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="26">
+            <code class="sql">  --Блокировка платежа</code></li>
+
+            <li class="never" data-hits="" data-linenumber="27">
+            <code class="sql">  procedure try_lock_payment(p_payment_id in payment.payment_id%type) is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="28">
+            <code class="sql">    v_payment_id payment.payment_id%type;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="29">
+            <code class="sql">    v_status payment.status%type;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="30">
+            <code class="sql">  begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="31">
+            <code class="sql">    --Не задан ID платежа</code></li>
+
+            <li class="covered" data-hits="49" data-linenumber="32">
+              <span class="hits">49</span>
+              <code class="sql">    if p_payment_id is null then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="33">
+            <code class="sql">      --raise common_pack.e_empty_payment_id;</code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="34">
+              <span class="hits">5</span>
+              <code class="sql">      raise_application_error(c_error_code_empty_payment_id, c_error_message_empty_payment_id);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="35">
+            <code class="sql">    end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="36">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="37">
+            <code class="sql">    --Получить необходимые поля платежа и заблокировать его</code></li>
+
+            <li class="covered" data-hits="44" data-linenumber="38">
+              <span class="hits">44</span>
+              <code class="sql">    select t.payment_id, t.status</code></li>
+
+            <li class="never" data-hits="" data-linenumber="39">
+            <code class="sql">    into v_payment_id, v_status</code></li>
+
+            <li class="never" data-hits="" data-linenumber="40">
+            <code class="sql">    from payment t</code></li>
+
+            <li class="never" data-hits="" data-linenumber="41">
+            <code class="sql">    where t.payment_id = p_payment_id</code></li>
+
+            <li class="never" data-hits="" data-linenumber="42">
+            <code class="sql">    for update nowait;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="43">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="44">
+            <code class="sql">    --Если платеж в финальном статусе (любой кроме &quot;created&quot;), то ошибка - операции с ним проводить нельзя</code></li>
+
+            <li class="covered" data-hits="39" data-linenumber="45">
+              <span class="hits">39</span>
+              <code class="sql">    if v_status &lt;&gt; c_status_created then</code></li>
+
+            <li class="covered" data-hits="3" data-linenumber="46">
+              <span class="hits">3</span>
+              <code class="sql">      raise_application_error(c_error_code_payment_in_final_status, c_error_message_payment_in_final_status);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="47">
+            <code class="sql">    end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="48">
+            <code class="sql">  exception</code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="49">
+              <span class="hits">5</span>
+              <code class="sql">    when no_data_found then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="50">
+            <code class="sql">      --Не найден заданный платеж в базе</code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="51">
+              <span class="hits">5</span>
+              <code class="sql">      raise_application_error(c_error_code_payment_not_found, c_error_message_payment_not_found);</code></li>
+
+            <li class="missed" data-hits="0" data-linenumber="52">
+              <code class="sql">    when common_pack.e_system_resource_busy then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="53">
+            <code class="sql">      --Объект уже заблокирован</code></li>
+
+            <li class="missed" data-hits="0" data-linenumber="54">
+              <code class="sql">      raise_application_error(c_error_code_payment_is_locked, c_error_message_payment_is_locked);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="55">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="56">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="57">
+            <code class="sql">  ----------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="58">
+            <code class="sql">  --Создание платежа.</code></li>
+
+            <li class="never" data-hits="" data-linenumber="59">
+            <code class="sql">  function create_payment(p_create_dtime in payment.create_dtime%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="60">
+            <code class="sql">                          p_from_client_id in payment.from_client_id%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="61">
+            <code class="sql">                          p_to_client_id in payment.to_client_id%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="62">
+            <code class="sql">                          p_summa in payment.summa%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="63">
+            <code class="sql">                          p_currency_id in payment.currency_id%type := common_pack.c_currency_id_rub,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="64">
+            <code class="sql">                          p_payment_details in t_payment_detail_array)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="65">
+            <code class="sql">    return payment.payment_id%type is</code></li>
+
+            <li class="covered" data-hits="27" data-linenumber="66">
+              <span class="hits">27</span>
+              <code class="sql">    v_payment_id payment.payment_id%type := null; --ID созданного платежа</code></li>
+
+            <li class="never" data-hits="" data-linenumber="67">
+            <code class="sql">  begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="68">
+            <code class="sql">    --Провека коллекции деталей платежа</code></li>
+
+            <li class="covered" data-hits="27" data-linenumber="69">
+              <span class="hits">27</span>
+              <code class="sql">    payment_detail_api_pack.check_payment_details(p_payment_details);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="70">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="25" data-linenumber="71">
+              <span class="hits">25</span>
+              <code class="sql">    g_is_api := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="72">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="73">
+            <code class="sql">    --Создание платежа, если нет флага ошибки</code></li>
+
+            <li class="covered" data-hits="25" data-linenumber="74">
+              <span class="hits">25</span>
+              <code class="sql">    insert into payment(payment_id, create_dtime, summa, currency_id, from_client_id, to_client_id, status)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="75">
+            <code class="sql">      values (</code></li>
+
+            <li class="never" data-hits="" data-linenumber="76">
+            <code class="sql">               payment_seq.nextval,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="77">
+            <code class="sql">               p_create_dtime,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="78">
+            <code class="sql">               p_summa,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="79">
+            <code class="sql">               p_currency_id,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="80">
+            <code class="sql">               p_from_client_id,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="81">
+            <code class="sql">               p_to_client_id,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="82">
+            <code class="sql">               c_status_created)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="83">
+            <code class="sql">    returning payment_id</code></li>
+
+            <li class="never" data-hits="" data-linenumber="84">
+            <code class="sql">    into v_payment_id;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="85">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="25" data-linenumber="86">
+              <span class="hits">25</span>
+              <code class="sql">    g_is_api := false;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="87">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="88">
+            <code class="sql">    --Создание деталей платежа</code></li>
+
+            <li class="covered" data-hits="25" data-linenumber="89">
+              <span class="hits">25</span>
+              <code class="sql">    payment_detail_api_pack.insert_payment_detail(p_payment_id =&gt; v_payment_id, p_payment_details =&gt; p_payment_details);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="90">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="25" data-linenumber="91">
+              <span class="hits">25</span>
+              <code class="sql">    return v_payment_id;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="92">
+            <code class="sql">  exception</code></li>
+
+            <li class="covered" data-hits="2" data-linenumber="93">
+              <span class="hits">2</span>
+              <code class="sql">    when others then</code></li>
+
+            <li class="covered" data-hits="2" data-linenumber="94">
+              <span class="hits">2</span>
+              <code class="sql">      g_is_api := false;</code></li>
+
+            <li class="covered" data-hits="2" data-linenumber="95">
+              <span class="hits">2</span>
+              <code class="sql">      raise;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="96">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="97">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="98">
+            <code class="sql">  ----------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="99">
+            <code class="sql">  --Сброс платежа в &quot;ошибочный статус&quot;.</code></li>
+
+            <li class="never" data-hits="" data-linenumber="100">
+            <code class="sql">  procedure fail_payment(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="101">
+            <code class="sql">    p_payment_id in payment.payment_id%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="102">
+            <code class="sql">    p_status_change_reason in payment.status_change_reason%type := c_status_change_reason_no_money) is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="103">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="4" data-linenumber="104">
+              <span class="hits">4</span>
+              <code class="sql">    if p_status_change_reason is null then</code></li>
+
+            <li class="missed" data-hits="0" data-linenumber="105">
+              <code class="sql">      raise e_empty_status_change_reason;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="106">
+            <code class="sql">    end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="107">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="108">
+            <code class="sql">    --Проверить и заблокировать платеж</code></li>
+
+            <li class="covered" data-hits="4" data-linenumber="109">
+              <span class="hits">4</span>
+              <code class="sql">    try_lock_payment(p_payment_id);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="110">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="111">
+              <span class="hits">1</span>
+              <code class="sql">    g_is_api := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="112">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="113">
+              <span class="hits">1</span>
+              <code class="sql">    update payment</code></li>
+
+            <li class="never" data-hits="" data-linenumber="114">
+            <code class="sql">    set status = c_status_failed, status_change_reason = p_status_change_reason</code></li>
+
+            <li class="never" data-hits="" data-linenumber="115">
+            <code class="sql">    where payment_id = p_payment_id;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="116">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="117">
+              <span class="hits">1</span>
+              <code class="sql">    g_is_api := false;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="118">
+            <code class="sql">  exception</code></li>
+
+            <li class="missed" data-hits="0" data-linenumber="119">
+              <code class="sql">    when e_empty_status_change_reason then</code></li>
+
+            <li class="missed" data-hits="0" data-linenumber="120">
+              <code class="sql">      raise_application_error(c_error_code_empty_status_change_reason, c_error_message_empty_status_change_reason);</code></li>
+
+            <li class="covered" data-hits="3" data-linenumber="121">
+              <span class="hits">3</span>
+              <code class="sql">    when others then</code></li>
+
+            <li class="covered" data-hits="3" data-linenumber="122">
+              <span class="hits">3</span>
+              <code class="sql">      g_is_api := false;</code></li>
+
+            <li class="covered" data-hits="3" data-linenumber="123">
+              <span class="hits">3</span>
+              <code class="sql">      raise;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="124">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="125">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="126">
+            <code class="sql">  ------------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="127">
+            <code class="sql">  --Отмена платежа.</code></li>
+
+            <li class="never" data-hits="" data-linenumber="128">
+            <code class="sql">  procedure cancel_payment(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="129">
+            <code class="sql">    p_payment_id in payment.payment_id%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="130">
+            <code class="sql">    p_status_change_reason in payment.status_change_reason%type := c_status_change_reason_user_error) is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="131">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="132">
+              <span class="hits">5</span>
+              <code class="sql">    if p_status_change_reason is null then</code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="133">
+              <span class="hits">1</span>
+              <code class="sql">      raise e_empty_status_change_reason;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="134">
+            <code class="sql">    end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="135">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="136">
+            <code class="sql">    --Проверить и заблокировать платеж</code></li>
+
+            <li class="covered" data-hits="4" data-linenumber="137">
+              <span class="hits">4</span>
+              <code class="sql">    try_lock_payment(p_payment_id);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="138">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="139">
+              <span class="hits">1</span>
+              <code class="sql">    g_is_api := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="140">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="141">
+              <span class="hits">1</span>
+              <code class="sql">    update payment</code></li>
+
+            <li class="never" data-hits="" data-linenumber="142">
+            <code class="sql">    set status = c_status_canceled, status_change_reason = p_status_change_reason</code></li>
+
+            <li class="never" data-hits="" data-linenumber="143">
+            <code class="sql">    where payment_id = p_payment_id;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="144">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="145">
+              <span class="hits">1</span>
+              <code class="sql">    g_is_api := false;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="146">
+            <code class="sql">  exception</code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="147">
+              <span class="hits">1</span>
+              <code class="sql">    when e_empty_status_change_reason then</code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="148">
+              <span class="hits">1</span>
+              <code class="sql">      g_is_api := false;</code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="149">
+              <span class="hits">1</span>
+              <code class="sql">      raise_application_error(c_error_code_empty_status_change_reason, c_error_message_empty_status_change_reason);</code></li>
+
+            <li class="covered" data-hits="3" data-linenumber="150">
+              <span class="hits">3</span>
+              <code class="sql">    when others then</code></li>
+
+            <li class="covered" data-hits="3" data-linenumber="151">
+              <span class="hits">3</span>
+              <code class="sql">      g_is_api := false;</code></li>
+
+            <li class="covered" data-hits="3" data-linenumber="152">
+              <span class="hits">3</span>
+              <code class="sql">      raise;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="153">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="154">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="155">
+            <code class="sql">  ------------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="156">
+            <code class="sql">  --Успешное завершение платежа.</code></li>
+
+            <li class="never" data-hits="" data-linenumber="157">
+            <code class="sql">  procedure successful_finish_payment(p_payment_id in payment.payment_id%type) is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="158">
+            <code class="sql">  begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="159">
+            <code class="sql">    --Проверить и заблокировать платеж</code></li>
+
+            <li class="covered" data-hits="7" data-linenumber="160">
+              <span class="hits">7</span>
+              <code class="sql">    try_lock_payment(p_payment_id);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="161">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="4" data-linenumber="162">
+              <span class="hits">4</span>
+              <code class="sql">    g_is_api := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="163">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="4" data-linenumber="164">
+              <span class="hits">4</span>
+              <code class="sql">    update payment</code></li>
+
+            <li class="never" data-hits="" data-linenumber="165">
+            <code class="sql">    set status = c_status_completed</code></li>
+
+            <li class="never" data-hits="" data-linenumber="166">
+            <code class="sql">    where payment_id = p_payment_id;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="167">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="4" data-linenumber="168">
+              <span class="hits">4</span>
+              <code class="sql">    g_is_api := false;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="169">
+            <code class="sql">  exception</code></li>
+
+            <li class="covered" data-hits="3" data-linenumber="170">
+              <span class="hits">3</span>
+              <code class="sql">    when others then</code></li>
+
+            <li class="covered" data-hits="3" data-linenumber="171">
+              <span class="hits">3</span>
+              <code class="sql">      g_is_api := false;</code></li>
+
+            <li class="covered" data-hits="3" data-linenumber="172">
+              <span class="hits">3</span>
+              <code class="sql">      raise;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="173">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="174">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="175">
+            <code class="sql">  ---------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="176">
+            <code class="sql">  --Получить данные о платеже</code></li>
+
+            <li class="never" data-hits="" data-linenumber="177">
+            <code class="sql">  function get_payment_record(p_payment_id in payment.payment_id%type := null)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="178">
+            <code class="sql">    return payment%rowtype is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="179">
+            <code class="sql">    v_payment payment%rowtype;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="180">
+            <code class="sql">  begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="181">
+            <code class="sql">    select *</code></li>
+
+            <li class="never" data-hits="" data-linenumber="182">
+            <code class="sql">    into v_payment</code></li>
+
+            <li class="never" data-hits="" data-linenumber="183">
+            <code class="sql">    from payment</code></li>
+
+            <li class="never" data-hits="" data-linenumber="184">
+            <code class="sql">    where payment_id = p_payment_id;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="185">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="186">
+            <code class="sql">    return v_payment;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="187">
+            <code class="sql">  exception</code></li>
+
+            <li class="never" data-hits="" data-linenumber="188">
+            <code class="sql">    when no_data_found then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="189">
+            <code class="sql">      --Не найден заданный платеж в базе</code></li>
+
+            <li class="never" data-hits="" data-linenumber="190">
+            <code class="sql">      raise_application_error(c_error_code_payment_not_found, c_error_message_payment_not_found);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="191">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="192">
+            <code class="sql">end;</code></li>
+</ol></pre></div>
+<div class="source_table" id="4D8C2DD782D72A75C26A4D5103918659"><div class="header"> <h3>PLSQL14_STUDENT6.PAYMENT_DETAIL_API_PACK</h3><h4><span class="yellow">84,62 %</span> lines covered</h4><div> <b>39</b> relevant lines. <span class="green"><b>33</b> lines covered</span> and <span class="red"><b>6</b> lines missed</span></div></div><pre><ol>
+
+            <li class="never" data-hits="" data-linenumber="1">
+            <code class="sql">PACKAGE BODY payment_detail_api_pack is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="2">
+            <code class="sql">  --Флаг использования API для венения изменений в таблицу payment_detail</code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="3">
+              <span class="hits">1</span>
+              <code class="sql">  g_is_api boolean := false;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="4">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="5">
+            <code class="sql">  ----------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="6">
+            <code class="sql">  --Проверка на внесение изменений через API</code></li>
+
+            <li class="never" data-hits="" data-linenumber="7">
+            <code class="sql">  procedure api_restiction is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="8">
+            <code class="sql">  begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="9">
+            <code class="sql">    --Проверка локального API срабатывает, если установлен глобальный API</code></li>
+
+            <li class="covered" data-hits="36" data-linenumber="10">
+              <span class="hits">36</span>
+              <code class="sql">    if common_pack.is_api and not g_is_api then</code></li>
+
+            <li class="covered" data-hits="3" data-linenumber="11">
+              <span class="hits">3</span>
+              <code class="sql">      raise_application_error(c_error_code_payment_detail_api_restriction,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="12">
+            <code class="sql">                              c_error_message_payment_detail_api_restriction);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="13">
+            <code class="sql">    end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="14">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="15">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="16">
+            <code class="sql">  ----------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="17">
+            <code class="sql">  --Проверка коллекции деталей платежей.</code></li>
+
+            <li class="never" data-hits="" data-linenumber="18">
+            <code class="sql">  procedure check_payment_details(p_payment_details in t_payment_detail_array) is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="19">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="32" data-linenumber="20">
+              <span class="hits">32</span>
+              <code class="sql">    if p_payment_details is empty then</code></li>
+
+            <li class="covered" data-hits="2" data-linenumber="21">
+              <span class="hits">2</span>
+              <code class="sql">      raise e_empty_payment_details;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="22">
+            <code class="sql">    end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="23">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="30" data-linenumber="24">
+              <span class="hits">30</span>
+              <code class="sql">    for i in p_payment_details.first .. p_payment_details.last loop</code></li>
+
+            <li class="covered" data-hits="82" data-linenumber="25">
+              <span class="hits">82</span>
+              <code class="sql">      if p_payment_details(i).field_id is null then</code></li>
+
+            <li class="covered" data-hits="2" data-linenumber="26">
+              <span class="hits">2</span>
+              <code class="sql">        raise e_empty_field_id;</code></li>
+
+            <li class="covered" data-hits="80" data-linenumber="27">
+              <span class="hits">80</span>
+              <code class="sql">      elsif p_payment_details(i).field_value is null then</code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="28">
+              <span class="hits">1</span>
+              <code class="sql">        raise e_empty_field_value;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="29">
+            <code class="sql">      end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="30">
+            <code class="sql">    end loop;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="31">
+            <code class="sql">  exception</code></li>
+
+            <li class="covered" data-hits="2" data-linenumber="32">
+              <span class="hits">2</span>
+              <code class="sql">    when e_empty_payment_details then</code></li>
+
+            <li class="covered" data-hits="2" data-linenumber="33">
+              <span class="hits">2</span>
+              <code class="sql">      raise_application_error(c_error_code_empty_payment_details, c_error_message_empty_payment_details);</code></li>
+
+            <li class="covered" data-hits="2" data-linenumber="34">
+              <span class="hits">2</span>
+              <code class="sql">    when e_empty_field_id then</code></li>
+
+            <li class="covered" data-hits="2" data-linenumber="35">
+              <span class="hits">2</span>
+              <code class="sql">      raise_application_error(c_error_code_empty_field_id, c_error_message_empty_field_id);</code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="36">
+              <span class="hits">1</span>
+              <code class="sql">    when e_empty_field_value then</code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="37">
+              <span class="hits">1</span>
+              <code class="sql">      raise_application_error(c_error_code_empty_field_value, c_error_message_empty_field_value);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="38">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="39">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="40">
+            <code class="sql">  ----------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="41">
+            <code class="sql">  --Добавление деталей платежа</code></li>
+
+            <li class="never" data-hits="" data-linenumber="42">
+            <code class="sql">  procedure insert_payment_detail(p_payment_id in payment.payment_id%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="43">
+            <code class="sql">                                  p_payment_details in t_payment_detail_array) is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="44">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="25" data-linenumber="45">
+              <span class="hits">25</span>
+              <code class="sql">    g_is_api := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="46">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="47">
+            <code class="sql">    --Проверить и заблокировать платеж</code></li>
+
+            <li class="covered" data-hits="25" data-linenumber="48">
+              <span class="hits">25</span>
+              <code class="sql">    payment_api_pack.try_lock_payment(p_payment_id);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="49">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="25" data-linenumber="50">
+              <span class="hits">25</span>
+              <code class="sql">    insert into payment_detail(payment_id, field_id, field_value)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="51">
+            <code class="sql">      select p_payment_id, pd.field_id, pd.field_value</code></li>
+
+            <li class="never" data-hits="" data-linenumber="52">
+            <code class="sql">      from table(p_payment_details) pd;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="53">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="25" data-linenumber="54">
+              <span class="hits">25</span>
+              <code class="sql">    g_is_api := false;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="55">
+            <code class="sql">  exception</code></li>
+
+            <li class="missed" data-hits="0" data-linenumber="56">
+              <code class="sql">    when others then</code></li>
+
+            <li class="missed" data-hits="0" data-linenumber="57">
+              <code class="sql">      g_is_api := false;</code></li>
+
+            <li class="missed" data-hits="0" data-linenumber="58">
+              <code class="sql">      raise;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="59">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="60">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="61">
+            <code class="sql">  ----------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="62">
+            <code class="sql">  --Данные платежа добавлены или обновлены.</code></li>
+
+            <li class="never" data-hits="" data-linenumber="63">
+            <code class="sql">  procedure insert_or_update_payment_detail(p_payment_id in payment.payment_id%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="64">
+            <code class="sql">                                            p_payment_details in t_payment_detail_array) is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="65">
+            <code class="sql">  begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="66">
+            <code class="sql">    --Провека коллекци</code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="67">
+              <span class="hits">5</span>
+              <code class="sql">    check_payment_details(p_payment_details);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="68">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="69">
+            <code class="sql">    --Проверить и заблокировать платеж</code></li>
+
+            <li class="covered" data-hits="2" data-linenumber="70">
+              <span class="hits">2</span>
+              <code class="sql">    payment_api_pack.try_lock_payment(p_payment_id);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="71">
+            <code class="sql"></code></li>
+
+            <li class="missed" data-hits="0" data-linenumber="72">
+              <code class="sql">    g_is_api := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="73">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="74">
+            <code class="sql">    --Изменение данных платежа</code></li>
+
+            <li class="missed" data-hits="0" data-linenumber="75">
+              <code class="sql">    merge into payment_detail a</code></li>
+
+            <li class="never" data-hits="" data-linenumber="76">
+            <code class="sql">    using (select value(c).field_id as field_id, value(c).field_value as field_value</code></li>
+
+            <li class="never" data-hits="" data-linenumber="77">
+            <code class="sql">           from table(p_payment_details) c) b</code></li>
+
+            <li class="never" data-hits="" data-linenumber="78">
+            <code class="sql">    on (b.field_id = a.field_id and a.payment_id = p_payment_id)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="79">
+            <code class="sql">    when matched then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="80">
+            <code class="sql">      update set a.field_value = b.field_value</code></li>
+
+            <li class="never" data-hits="" data-linenumber="81">
+            <code class="sql">    when not matched then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="82">
+            <code class="sql">      insert (a.payment_id, a.field_id, a.field_value)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="83">
+            <code class="sql">      values (p_payment_id, b.field_id, b.field_value);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="84">
+            <code class="sql"></code></li>
+
+            <li class="missed" data-hits="0" data-linenumber="85">
+              <code class="sql">    g_is_api := false;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="86">
+            <code class="sql">  exception</code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="87">
+              <span class="hits">5</span>
+              <code class="sql">    when others then</code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="88">
+              <span class="hits">5</span>
+              <code class="sql">      g_is_api := false;</code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="89">
+              <span class="hits">5</span>
+              <code class="sql">      raise;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="90">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="91">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="92">
+            <code class="sql">  ------------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="93">
+            <code class="sql">  --Детали платежа удалены.</code></li>
+
+            <li class="never" data-hits="" data-linenumber="94">
+            <code class="sql">  procedure delete_payment_detail(p_payment_id in payment.payment_id%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="95">
+            <code class="sql">                                  p_payment_detail_field_ids in t_number_array) is</code></li>
+
+            <li class="covered" data-hits="7" data-linenumber="96">
+              <span class="hits">7</span>
+              <code class="sql">    v_deleted_field_ids t_number_array := t_number_array(); --Коллекция удаленных деталей платежа</code></li>
+
+            <li class="never" data-hits="" data-linenumber="97">
+            <code class="sql">  begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="98">
+            <code class="sql">    --Проверить и заблокировать платеж</code></li>
+
+            <li class="covered" data-hits="7" data-linenumber="99">
+              <span class="hits">7</span>
+              <code class="sql">    payment_api_pack.try_lock_payment(p_payment_id);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="100">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="101">
+              <span class="hits">5</span>
+              <code class="sql">    g_is_api := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="102">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="103">
+              <span class="hits">5</span>
+              <code class="sql">    delete from payment_detail</code></li>
+
+            <li class="never" data-hits="" data-linenumber="104">
+            <code class="sql">    where payment_id = p_payment_id and field_id in (select column_value from table(p_payment_detail_field_ids))</code></li>
+
+            <li class="never" data-hits="" data-linenumber="105">
+            <code class="sql">    returning field_id</code></li>
+
+            <li class="never" data-hits="" data-linenumber="106">
+            <code class="sql">    bulk collect into v_deleted_field_ids;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="107">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="108">
+              <span class="hits">5</span>
+              <code class="sql">    g_is_api := false;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="109">
+            <code class="sql">  exception</code></li>
+
+            <li class="covered" data-hits="2" data-linenumber="110">
+              <span class="hits">2</span>
+              <code class="sql">    when others then</code></li>
+
+            <li class="covered" data-hits="2" data-linenumber="111">
+              <span class="hits">2</span>
+              <code class="sql">      g_is_api := false;</code></li>
+
+            <li class="covered" data-hits="2" data-linenumber="112">
+              <span class="hits">2</span>
+              <code class="sql">      raise;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="113">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="114">
+            <code class="sql">end;</code></li>
+</ol></pre></div>
+<div class="source_table" id="6E8228085538BF405D53AA885B137B94"><div class="header"> <h3>PLSQL14_STUDENT6.UT_COMMON_PACK</h3><h4><span class="yellow">82,61 %</span> lines covered</h4><div> <b>23</b> relevant lines. <span class="green"><b>19</b> lines covered</span> and <span class="red"><b>4</b> lines missed</span></div></div><pre><ol>
+
+            <li class="never" data-hits="" data-linenumber="1">
+            <code class="sql">PACKAGE BODY ut_common_pack is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="2">
+            <code class="sql">  g_payment_id payment.payment_id%type; --ID созданного платежа</code></li>
+
+            <li class="never" data-hits="" data-linenumber="3">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="4">
+            <code class="sql">  ---------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="5">
+            <code class="sql">  --Сгенерировать случайное значение детали платежа &quot;Клиентское ПО&quot;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="6">
+            <code class="sql">  function get_random_payment_detail_client_software</code></li>
+
+            <li class="never" data-hits="" data-linenumber="7">
+            <code class="sql">    return payment_detail.field_value%type is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="8">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="25" data-linenumber="9">
+              <span class="hits">25</span>
+              <code class="sql">    return dbms_random.string(&apos;A&apos;, 20);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="10">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="11">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="12">
+            <code class="sql">  ---------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="13">
+            <code class="sql">  --Сгенерировать случайное значение детали платежа &quot;IP-адрес&quot;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="14">
+            <code class="sql">  function get_random_payment_detail_ip</code></li>
+
+            <li class="never" data-hits="" data-linenumber="15">
+            <code class="sql">    return payment_detail.field_value%type is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="16">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="25" data-linenumber="17">
+              <span class="hits">25</span>
+              <code class="sql">    return round(dbms_random.value(100, 999))||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="18">
+            <code class="sql">           &apos;.&apos; ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="19">
+            <code class="sql">           round(dbms_random.value(100, 999))||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="20">
+            <code class="sql">           &apos;.&apos; ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="21">
+            <code class="sql">           round(dbms_random.value(100, 999))||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="22">
+            <code class="sql">           &apos;.&apos; ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="23">
+            <code class="sql">           round(dbms_random.value(100, 999));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="24">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="25">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="26">
+            <code class="sql">  ---------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="27">
+            <code class="sql">  --Сгенерировать случайное значение детали платежа &quot;Примечание&quot;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="28">
+            <code class="sql">  function get_random_payment_detail_note</code></li>
+
+            <li class="never" data-hits="" data-linenumber="29">
+            <code class="sql">    return payment_detail.field_value%type is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="30">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="28" data-linenumber="31">
+              <span class="hits">28</span>
+              <code class="sql">    return dbms_random.string(&apos;p&apos;, 100);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="32">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="33">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="34">
+            <code class="sql">  ---------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="35">
+            <code class="sql">  --Сгенерировать случайное ID валюты</code></li>
+
+            <li class="never" data-hits="" data-linenumber="36">
+            <code class="sql">  function get_random_currency_id</code></li>
+
+            <li class="never" data-hits="" data-linenumber="37">
+            <code class="sql">    return currency.currency_id%type is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="38">
+            <code class="sql">    v_currency_id currency.currency_id%type;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="39">
+            <code class="sql">    v_rownum number;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="40">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="81" data-linenumber="41">
+              <span class="hits">81</span>
+              <code class="sql">    for r in (select count(1) as cnt</code></li>
+
+            <li class="never" data-hits="" data-linenumber="42">
+            <code class="sql">              from currency) loop</code></li>
+
+            <li class="covered" data-hits="27" data-linenumber="43">
+              <span class="hits">27</span>
+              <code class="sql">      v_rownum := round(dbms_random.value(1, r.cnt));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="44">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="27" data-linenumber="45">
+              <span class="hits">27</span>
+              <code class="sql">      select currency_id</code></li>
+
+            <li class="never" data-hits="" data-linenumber="46">
+            <code class="sql">      into v_currency_id</code></li>
+
+            <li class="never" data-hits="" data-linenumber="47">
+            <code class="sql">      from (select rownum as row_num, currency_id from currency)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="48">
+            <code class="sql">      where row_num = v_rownum;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="49">
+            <code class="sql">    end loop;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="50">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="27" data-linenumber="51">
+              <span class="hits">27</span>
+              <code class="sql">    return v_currency_id;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="52">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="53">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="54">
+            <code class="sql">  ---------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="55">
+            <code class="sql">  --Сгенерировать случайное значение суммы платежа</code></li>
+
+            <li class="never" data-hits="" data-linenumber="56">
+            <code class="sql">  function get_random_payment_summa</code></li>
+
+            <li class="never" data-hits="" data-linenumber="57">
+            <code class="sql">    return payment.summa%type is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="58">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="27" data-linenumber="59">
+              <span class="hits">27</span>
+              <code class="sql">    return round(dbms_random.value(100, 1000000), 2);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="60">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="61">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="62">
+            <code class="sql">  ---------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="63">
+            <code class="sql">  --Создать случайного клиента</code></li>
+
+            <li class="never" data-hits="" data-linenumber="64">
+            <code class="sql">  function create_random_client</code></li>
+
+            <li class="never" data-hits="" data-linenumber="65">
+            <code class="sql">    return client.client_id%type is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="66">
+            <code class="sql">    v_client_id client.client_id%type;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="67">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="54" data-linenumber="68">
+              <span class="hits">54</span>
+              <code class="sql">    insert into client(client_id, is_active, is_blocked)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="69">
+            <code class="sql">    values (client_seq.nextval, 1, 0)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="70">
+            <code class="sql">    returning client_id</code></li>
+
+            <li class="never" data-hits="" data-linenumber="71">
+            <code class="sql">    into v_client_id;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="72">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="54" data-linenumber="73">
+              <span class="hits">54</span>
+              <code class="sql">    return v_client_id;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="74">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="75">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="76">
+            <code class="sql">  ---------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="77">
+            <code class="sql">  --Создать платеж по умолчанию с деталями по умолчанию и сохранить его в глобальной переменной</code></li>
+
+            <li class="never" data-hits="" data-linenumber="78">
+            <code class="sql">  procedure create_default_payment is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="79">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="23" data-linenumber="80">
+              <span class="hits">23</span>
+              <code class="sql">    g_payment_id := payment_api_pack.create_payment(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="81">
+            <code class="sql">                      p_create_dtime =&gt; systimestamp,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="82">
+            <code class="sql">                      p_from_client_id =&gt; create_random_client(),</code></li>
+
+            <li class="never" data-hits="" data-linenumber="83">
+            <code class="sql">                      p_to_client_id =&gt; create_random_client(),</code></li>
+
+            <li class="never" data-hits="" data-linenumber="84">
+            <code class="sql">                      p_summa =&gt; get_random_payment_summa(),</code></li>
+
+            <li class="never" data-hits="" data-linenumber="85">
+            <code class="sql">                      p_currency_id =&gt; get_random_currency_id,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="86">
+            <code class="sql">                      p_payment_details =&gt; t_payment_detail_array(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="87">
+            <code class="sql">                                            t_payment_detail(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="88">
+            <code class="sql">                                              payment_detail_api_pack.c_payment_detail_field_id_client_software,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="89">
+            <code class="sql">                                              get_random_payment_detail_client_software()),</code></li>
+
+            <li class="never" data-hits="" data-linenumber="90">
+            <code class="sql">                                            t_payment_detail(payment_detail_api_pack.c_payment_detail_field_id_ip,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="91">
+            <code class="sql">                                                             get_random_payment_detail_ip()),</code></li>
+
+            <li class="never" data-hits="" data-linenumber="92">
+            <code class="sql">                                            t_payment_detail(payment_detail_api_pack.c_payment_detail_field_id_note,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="93">
+            <code class="sql">                                                             get_random_payment_detail_note())));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="94">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="95">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="96">
+            <code class="sql">  ---------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="97">
+            <code class="sql">  --Создать платеж по умолчанию с указаннми деталями и сохранить его в глобальной переменной</code></li>
+
+            <li class="never" data-hits="" data-linenumber="98">
+            <code class="sql">  procedure create_default_payment(p_payment_details in t_payment_detail_array) is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="99">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="3" data-linenumber="100">
+              <span class="hits">3</span>
+              <code class="sql">    g_payment_id := payment_api_pack.create_payment(p_create_dtime =&gt; systimestamp,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="101">
+            <code class="sql">                                                    p_from_client_id =&gt; create_random_client(),</code></li>
+
+            <li class="never" data-hits="" data-linenumber="102">
+            <code class="sql">                                                    p_to_client_id =&gt; create_random_client(),</code></li>
+
+            <li class="never" data-hits="" data-linenumber="103">
+            <code class="sql">                                                    p_summa =&gt; get_random_payment_summa(),</code></li>
+
+            <li class="never" data-hits="" data-linenumber="104">
+            <code class="sql">                                                    p_currency_id =&gt; get_random_currency_id,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="105">
+            <code class="sql">                                                    p_payment_details =&gt; p_payment_details);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="106">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="107">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="108">
+            <code class="sql">  ---------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="109">
+            <code class="sql">  --Получить ID платежа, созданного в setup-процедуре</code></li>
+
+            <li class="never" data-hits="" data-linenumber="110">
+            <code class="sql">  function get_default_payment_id</code></li>
+
+            <li class="never" data-hits="" data-linenumber="111">
+            <code class="sql">    return payment.payment_id%type is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="112">
+            <code class="sql">    v_payment_id payment.payment_id%type;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="113">
+            <code class="sql">  begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="114">
+            <code class="sql">    --Проверить, если ли платеж в базе, т.к. перед тестом могли не запустить setup-процедуру создания платежа</code></li>
+
+            <li class="covered" data-hits="22" data-linenumber="115">
+              <span class="hits">22</span>
+              <code class="sql">    select max(payment_id)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="116">
+            <code class="sql">    into v_payment_id</code></li>
+
+            <li class="never" data-hits="" data-linenumber="117">
+            <code class="sql">    from payment</code></li>
+
+            <li class="never" data-hits="" data-linenumber="118">
+            <code class="sql">    where payment_id = g_payment_id;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="119">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="22" data-linenumber="120">
+              <span class="hits">22</span>
+              <code class="sql">    if v_payment_id is null then</code></li>
+
+            <li class="missed" data-hits="0" data-linenumber="121">
+              <code class="sql">      raise_application_error(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="122">
+            <code class="sql">        -20999,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="123">
+            <code class="sql">        &apos;Платеж PAYMENT_ID=&apos; || g_payment_id || &apos; отсутствует в базе данных&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="124">
+            <code class="sql">    end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="125">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="1" data-linenumber="126">
+              <span class="hits">1</span>
+              <code class="sql">    return v_payment_id;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="127">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="128">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="129">
+            <code class="sql">  ---------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="130">
+            <code class="sql">  --Получить данные о платеже</code></li>
+
+            <li class="never" data-hits="" data-linenumber="131">
+            <code class="sql">  function get_payment_record(p_payment_id in payment.payment_id%type := null)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="132">
+            <code class="sql">    return payment%rowtype is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="133">
+            <code class="sql">    v_payment payment%rowtype;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="134">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="9" data-linenumber="135">
+              <span class="hits">9</span>
+              <code class="sql">    select *</code></li>
+
+            <li class="never" data-hits="" data-linenumber="136">
+            <code class="sql">    into v_payment</code></li>
+
+            <li class="never" data-hits="" data-linenumber="137">
+            <code class="sql">    from payment</code></li>
+
+            <li class="never" data-hits="" data-linenumber="138">
+            <code class="sql">    where payment_id = p_payment_id;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="139">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="9" data-linenumber="140">
+              <span class="hits">9</span>
+              <code class="sql">    return v_payment;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="141">
+            <code class="sql">  exception</code></li>
+
+            <li class="missed" data-hits="0" data-linenumber="142">
+              <code class="sql">    when no_data_found then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="143">
+            <code class="sql">      --Не найден заданный платеж в базе</code></li>
+
+            <li class="missed" data-hits="0" data-linenumber="144">
+              <code class="sql">      raise_application_error(payment_api_pack.c_error_code_payment_not_found,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="145">
+            <code class="sql">                              payment_api_pack.c_error_message_payment_not_found);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="146">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="147">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="148">
+            <code class="sql">  ---------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="149">
+            <code class="sql">  --Получить значение заданной детали платежа</code></li>
+
+            <li class="never" data-hits="" data-linenumber="150">
+            <code class="sql">  function get_payment_detail_field_value(p_payment_id in payment.payment_id%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="151">
+            <code class="sql">                                          p_payment_detail_field_id payment_detail.field_id%type)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="152">
+            <code class="sql">    return payment_detail.field_value%type is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="153">
+            <code class="sql">    v_payment_detail_field_value payment_detail.field_value%type;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="154">
+            <code class="sql">  begin</code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="155">
+              <span class="hits">5</span>
+              <code class="sql">    select max(field_value)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="156">
+            <code class="sql">    into v_payment_detail_field_value</code></li>
+
+            <li class="never" data-hits="" data-linenumber="157">
+            <code class="sql">    from payment_detail</code></li>
+
+            <li class="never" data-hits="" data-linenumber="158">
+            <code class="sql">    where payment_id = p_payment_id and field_id = p_payment_detail_field_id;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="159">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="5" data-linenumber="160">
+              <span class="hits">5</span>
+              <code class="sql">    return v_payment_detail_field_value;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="161">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="162">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="163">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="164">
+            <code class="sql">  ---------------------------------------------------------------------------------------------------------------------</code></li>
+
+            <li class="never" data-hits="" data-linenumber="165">
+            <code class="sql">  --Возбудить исключение об ошибке unit-теста</code></li>
+
+            <li class="never" data-hits="" data-linenumber="166">
+            <code class="sql">  procedure ut_failed is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="167">
+            <code class="sql">  begin</code></li>
+
+            <li class="missed" data-hits="0" data-linenumber="168">
+              <code class="sql">    raise_application_error(c_error_code_ut_failed, c_error_message_ut_failed);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="169">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="170">
+            <code class="sql">end;</code></li>
+</ol></pre></div>
+<div class="source_table" id="5E9B6E6F2F39265070591CCD6AAD8002"><div class="header"> <h3>PLSQL14_STUDENT6.UT_UTILS_PACK</h3><h4><span class="red">0 %</span> lines covered</h4><div> <b>59</b> relevant lines. <span class="green"><b>0</b> lines covered</span> and <span class="red"><b>59</b> lines missed</span></div></div><pre><ol>
+
+            <li class="never" data-hits="" data-linenumber="1">
+            <code class="sql">PACKAGE BODY ut_utils_pack is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="2">
+            <code class="sql">  --Поиск и запуск тестовых процедур заданного пакета</code></li>
+
+            <li class="never" data-hits="" data-linenumber="3">
+            <code class="sql">  procedure run_tests(p_package_name user_objects.object_name%type := null) is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="4">
+            <code class="sql">    v_sql varchar2(4000);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="5">
+            <code class="sql">  begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="6">
+            <code class="sql">   &lt;&lt;package_loop&gt;&gt;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="7">
+            <code class="sql">    for r_pack</code></li>
+
+            <li class="never" data-hits="" data-linenumber="8">
+            <code class="sql">      in (select a.name as package_name</code></li>
+
+            <li class="never" data-hits="" data-linenumber="9">
+            <code class="sql">          from user_source a</code></li>
+
+            <li class="never" data-hits="" data-linenumber="10">
+            <code class="sql">          where a.type = &apos;PACKAGE&apos;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="11">
+            <code class="sql">                and a.name = nvl(upper(p_package_name), a.name)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="12">
+            <code class="sql">                and instr(a.text, &apos;--%suite(&apos;, 1) &gt; 0</code></li>
+
+            <li class="never" data-hits="" data-linenumber="13">
+            <code class="sql">          order by 1) loop</code></li>
+
+            <li class="never" data-hits="" data-linenumber="14">
+            <code class="sql">      dbms_output.put_line(&apos;=== Тесты в пакете: &apos; || lower(r_pack.package_name));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="15">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="16">
+            <code class="sql">     &lt;&lt;procedure_loop&gt;&gt;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="17">
+            <code class="sql">      for r_proc</code></li>
+
+            <li class="never" data-hits="" data-linenumber="18">
+            <code class="sql">        in (select lower(c.package_name) as package_lower_name, c.test_name, lower(c.proc_name) as proc_lower_name</code></li>
+
+            <li class="never" data-hits="" data-linenumber="19">
+            <code class="sql">            from (select b.name as package_name,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="20">
+            <code class="sql">                         trim(replace(replace(text, &apos;--%test(&apos;), &apos;)&apos; || chr(10))) as test_name,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="21">
+            <code class="sql">                         trim(replace(replace(upper(b.next_text), &apos;PROCEDURE&apos;), &apos;;&apos; || chr(10))) as proc_name</code></li>
+
+            <li class="never" data-hits="" data-linenumber="22">
+            <code class="sql">                  from (select a.name, a.text, lead(a.text) over (order by a.name, a.line) as next_text</code></li>
+
+            <li class="never" data-hits="" data-linenumber="23">
+            <code class="sql">                        from user_source a</code></li>
+
+            <li class="never" data-hits="" data-linenumber="24">
+            <code class="sql">                        where a.type = &apos;PACKAGE&apos; and a.name = r_pack.package_name</code></li>
+
+            <li class="never" data-hits="" data-linenumber="25">
+            <code class="sql">                        order by a.line) b</code></li>
+
+            <li class="never" data-hits="" data-linenumber="26">
+            <code class="sql">                  where instr(b.text, &apos;--%test(&apos;) &gt; 0 and instr(upper(b.next_text), &apos;PROCEDURE&apos;) &gt; 0) c</code></li>
+
+            <li class="never" data-hits="" data-linenumber="27">
+            <code class="sql">            where exists</code></li>
+
+            <li class="never" data-hits="" data-linenumber="28">
+            <code class="sql">                    (select 1</code></li>
+
+            <li class="never" data-hits="" data-linenumber="29">
+            <code class="sql">                     from user_procedures up</code></li>
+
+            <li class="never" data-hits="" data-linenumber="30">
+            <code class="sql">                     where up.object_name = c.package_name and up.procedure_name = c.proc_name)) loop</code></li>
+
+            <li class="never" data-hits="" data-linenumber="31">
+            <code class="sql">        begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="32">
+            <code class="sql">          savepoint sp1;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="33">
+            <code class="sql">          v_sql := &apos;begin &apos; || r_proc.package_lower_name || &apos;.&apos; || r_proc.proc_lower_name || &apos;; end;&apos;;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="34">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="35">
+            <code class="sql">          --Запуск процедуры теста</code></li>
+
+            <li class="never" data-hits="" data-linenumber="36">
+            <code class="sql">          execute immediate v_sql;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="37">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="38">
+            <code class="sql">          --Тест успешно прошел</code></li>
+
+            <li class="never" data-hits="" data-linenumber="39">
+            <code class="sql">          dbms_output.put_line(&apos;Тест: &quot;&apos; || r_proc.test_name || &apos;&quot;&apos; || &apos; успешно прошел =)&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="40">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="41">
+            <code class="sql">          --Откат</code></li>
+
+            <li class="never" data-hits="" data-linenumber="42">
+            <code class="sql">          rollback to sp1;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="43">
+            <code class="sql">        exception</code></li>
+
+            <li class="never" data-hits="" data-linenumber="44">
+            <code class="sql">          when others then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="45">
+            <code class="sql">            --Тест не прошел</code></li>
+
+            <li class="never" data-hits="" data-linenumber="46">
+            <code class="sql">            dbms_output.put_line(&apos;Тест: &quot;&apos; || r_proc.test_name || &apos;&quot;&apos; || &apos; не был пройден.&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="47">
+            <code class="sql">            dbms_output.put_line(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="48">
+            <code class="sql">              &apos;  Возникла ошибка в &apos; ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="49">
+            <code class="sql">              r_proc.package_lower_name ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="50">
+            <code class="sql">              &apos;.&apos; ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="51">
+            <code class="sql">              r_proc.proc_lower_name ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="52">
+            <code class="sql">              &apos;. Errm: &apos; ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="53">
+            <code class="sql">              sqlerrm);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="54">
+            <code class="sql">            rollback to sp1;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="55">
+            <code class="sql">        end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="56">
+            <code class="sql">      end loop;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="57">
+            <code class="sql">    end loop;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="58">
+            <code class="sql">  end;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="59">
+            <code class="sql">end ut_utils_pack;</code></li>
+</ol></pre></div>
+<div class="source_table" id="F16B7A685B053B5914DE8BF62DF06B81"><div class="header"> <h3>PLSQL14_STUDENT6.CANCEL_PAYMENT</h3><h4><span class="red">0 %</span> lines covered</h4><div> <b>36</b> relevant lines. <span class="green"><b>0</b> lines covered</span> and <span class="red"><b>36</b> lines missed</span></div></div><pre><ol>
+
+            <li class="never" data-hits="" data-linenumber="1">
+            <code class="sql">procedure cancel_payment(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="2">
+            <code class="sql">  p_payment_id payment.payment_id%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="3">
+            <code class="sql">  p_status_change_reason payment.status_change_reason%type := &apos;ошибка пользователя&apos;) is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="4">
+            <code class="sql">  --Используемые статусы:</code></li>
+
+            <li class="never" data-hits="" data-linenumber="5">
+            <code class="sql">  c_status_created constant payment.status%type := 0;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="6">
+            <code class="sql">  c_status_canceled constant payment.status%type := 3;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="7">
+            <code class="sql">  --</code></li>
+
+            <li class="never" data-hits="" data-linenumber="8">
+            <code class="sql">  v_current_dtime timestamp(3) := systimestamp; --Дата операции</code></li>
+
+            <li class="never" data-hits="" data-linenumber="9">
+            <code class="sql">begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="10">
+            <code class="sql">  if p_payment_id is null then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="11">
+            <code class="sql">    dbms_output.put_line(&apos;ID объекта не может быть пустым&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="12">
+            <code class="sql">  elsif p_status_change_reason is null then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="13">
+            <code class="sql">    dbms_output.put_line(&apos;Причина не может быть пустой&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="14">
+            <code class="sql">  else</code></li>
+
+            <li class="never" data-hits="" data-linenumber="15">
+            <code class="sql">    update payment</code></li>
+
+            <li class="never" data-hits="" data-linenumber="16">
+            <code class="sql">    set status = c_status_canceled, status_change_reason = p_status_change_reason</code></li>
+
+            <li class="never" data-hits="" data-linenumber="17">
+            <code class="sql">    where payment_id = p_payment_id and status = c_status_created;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="18">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="19">
+            <code class="sql">    if sql%rowcount = 0 then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="20">
+            <code class="sql">      dbms_output.put_line(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="21">
+            <code class="sql">        &apos;Платеж ID=&apos; ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="22">
+            <code class="sql">        to_char(p_payment_id)||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="23">
+            <code class="sql">        &apos; не найден или находится не в статусе &quot;Платеж создан&quot;&apos; ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="24">
+            <code class="sql">        c_status_created);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="25">
+            <code class="sql">    else</code></li>
+
+            <li class="never" data-hits="" data-linenumber="26">
+            <code class="sql">      dbms_output.put_line(&apos;Дата операции: &apos; || to_char(v_current_dtime, &apos;YYYY-Mon-DDy HH24:MI:SS.FF3&apos;));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="27">
+            <code class="sql">      dbms_output.put_line(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="28">
+            <code class="sql">        &apos;Отмена платежа с указанием причины. &apos; ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="29">
+            <code class="sql">        (&apos;Статус: &apos; || c_status_canceled || &apos;. &apos;)||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="30">
+            <code class="sql">        (&apos;Причина: &apos; || p_status_change_reason));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="31">
+            <code class="sql">      dbms_output.put_line(&apos;ID объекта: &apos; || to_char(p_payment_id));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="32">
+            <code class="sql">    end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="33">
+            <code class="sql">  end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="34">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="35">
+            <code class="sql">  dbms_output.put_line(&apos;&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="36">
+            <code class="sql">end;</code></li>
+</ol></pre></div>
+<div class="source_table" id="C5B2158010F67B0DFF59C1CDF257F207"><div class="header"> <h3>PLSQL14_STUDENT6.DELETE_PAYMENT_DETAIL</h3><h4><span class="red">0 %</span> lines covered</h4><div> <b>27</b> relevant lines. <span class="green"><b>0</b> lines covered</span> and <span class="red"><b>27</b> lines missed</span></div></div><pre><ol>
+
+            <li class="never" data-hits="" data-linenumber="1">
+            <code class="sql">procedure delete_payment_detail(p_payment_id payment.payment_id%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="2">
+            <code class="sql">                                                  p_payment_detail_field_ids t_number_array) is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="3">
+            <code class="sql">  --ID полей данных деталей платежа:</code></li>
+
+            <li class="never" data-hits="" data-linenumber="4">
+            <code class="sql">  c_payment_detail_field_id_client_software constant payment_detail.field_id%type := 1; --Софт, через который совершался платеж</code></li>
+
+            <li class="never" data-hits="" data-linenumber="5">
+            <code class="sql">  c_payment_detail_field_id_ip constant payment_detail.field_id%type := 2; --IP адрес плательщика</code></li>
+
+            <li class="never" data-hits="" data-linenumber="6">
+            <code class="sql">  c_payment_detail_field_id_note constant payment_detail.field_id%type := 3; --Примечание к переводу</code></li>
+
+            <li class="never" data-hits="" data-linenumber="7">
+            <code class="sql">  c_payment_detail_field_id_is_checked constant payment_detail.field_id%type := 4; --Проверен ли платеж в системе &quot;АнтиФрод&quot;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="8">
+            <code class="sql">  --</code></li>
+
+            <li class="never" data-hits="" data-linenumber="9">
+            <code class="sql">  v_current_date timestamp(2) := sysdate; --Дата операции</code></li>
+
+            <li class="never" data-hits="" data-linenumber="10">
+            <code class="sql">  v_deleted_field_ids t_number_array := t_number_array(); --Коллекция удаленных деталей платежа</code></li>
+
+            <li class="never" data-hits="" data-linenumber="11">
+            <code class="sql">begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="12">
+            <code class="sql">  if p_payment_id is null then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="13">
+            <code class="sql">    dbms_output.put_line(&apos;ID объекта не может быть пустым&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="14">
+            <code class="sql">  else</code></li>
+
+            <li class="never" data-hits="" data-linenumber="15">
+            <code class="sql">    delete from payment_detail</code></li>
+
+            <li class="never" data-hits="" data-linenumber="16">
+            <code class="sql">    where payment_id = p_payment_id and field_id in (select column_value from table(p_payment_detail_field_ids))</code></li>
+
+            <li class="never" data-hits="" data-linenumber="17">
+            <code class="sql">    returning field_id</code></li>
+
+            <li class="never" data-hits="" data-linenumber="18">
+            <code class="sql">    bulk collect into v_deleted_field_ids;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="19">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="20">
+            <code class="sql">    dbms_output.put_line(&apos;Дата операции: &apos; || to_char(v_current_date, &apos;YYYYMMHH_HH24MISS&apos;));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="21">
+            <code class="sql">    dbms_output.put_line(&apos;Детали платежа удалены по списку id_полей&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="22">
+            <code class="sql">    dbms_output.put_line(&apos;ID объекта: &apos; || to_char(p_payment_id));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="23">
+            <code class="sql">    dbms_output.put_line(&apos;Кол-во удаленных полей: &apos; || to_char(v_deleted_field_ids.count));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="24">
+            <code class="sql">  end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="25">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="26">
+            <code class="sql">  dbms_output.put_line(&apos;&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="27">
+            <code class="sql">end;</code></li>
+</ol></pre></div>
+<div class="source_table" id="E6246318A303365890DD4074E0A321CD"><div class="header"> <h3>PLSQL14_STUDENT6.FAIL_PAYMENT</h3><h4><span class="red">0 %</span> lines covered</h4><div> <b>38</b> relevant lines. <span class="green"><b>0</b> lines covered</span> and <span class="red"><b>38</b> lines missed</span></div></div><pre><ol>
+
+            <li class="never" data-hits="" data-linenumber="1">
+            <code class="sql">procedure fail_payment(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="2">
+            <code class="sql">  p_payment_id payment.payment_id%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="3">
+            <code class="sql">  p_status_change_reason payment.status_change_reason%type := &apos;недостаточно средств&apos;) is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="4">
+            <code class="sql">  --Используемые статусы:</code></li>
+
+            <li class="never" data-hits="" data-linenumber="5">
+            <code class="sql">  c_status_created constant payment.status%type := 0;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="6">
+            <code class="sql">  c_status_failed constant payment.status%type := 2;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="7">
+            <code class="sql">--</code></li>
+
+            <li class="never" data-hits="" data-linenumber="8">
+            <code class="sql">--v_payment_id payment.payment_id%type := 10; --ID платежа для операции</code></li>
+
+            <li class="never" data-hits="" data-linenumber="9">
+            <code class="sql">--v_status_change_reason payment.status_change_reason%type := &apos;недостаточно средств&apos;;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="10">
+            <code class="sql">  v_current_dtime timestamp(6) := systimestamp; --</code></li>
+
+            <li class="never" data-hits="" data-linenumber="11">
+            <code class="sql">begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="12">
+            <code class="sql">  if p_payment_id is null then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="13">
+            <code class="sql">    dbms_output.put_line(&apos;ID объекта не может быть пустым&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="14">
+            <code class="sql">  elsif p_status_change_reason is null then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="15">
+            <code class="sql">    dbms_output.put_line(&apos;Причина не может быть пустой&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="16">
+            <code class="sql">  else</code></li>
+
+            <li class="never" data-hits="" data-linenumber="17">
+            <code class="sql">    update payment</code></li>
+
+            <li class="never" data-hits="" data-linenumber="18">
+            <code class="sql">    set status = c_status_failed, status_change_reason = p_status_change_reason</code></li>
+
+            <li class="never" data-hits="" data-linenumber="19">
+            <code class="sql">    where payment_id = p_payment_id and status = c_status_created;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="20">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="21">
+            <code class="sql">    if sql%rowcount = 0 then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="22">
+            <code class="sql">      dbms_output.put_line(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="23">
+            <code class="sql">        &apos;Платеж ID=&apos; ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="24">
+            <code class="sql">        to_char(p_payment_id)||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="25">
+            <code class="sql">        &apos; не найден или находится не в статусе &quot;Платеж создан&quot;&apos; ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="26">
+            <code class="sql">        c_status_created);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="27">
+            <code class="sql">    else</code></li>
+
+            <li class="never" data-hits="" data-linenumber="28">
+            <code class="sql">      dbms_output.put_line(&apos;Дата операции: &apos; || to_char(v_current_dtime, &apos;DD/MM/YYYY HH24:MI:SS.FF6&apos;));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="29">
+            <code class="sql">      dbms_output.put_line(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="30">
+            <code class="sql">        &apos;Сброс платежа в &quot;ошибочный статус&quot; с указанием причины. &apos; ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="31">
+            <code class="sql">        (&apos;Статус: &apos; || c_status_failed || &apos;. &apos;)||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="32">
+            <code class="sql">        (&apos;Причина: &apos; || p_status_change_reason));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="33">
+            <code class="sql">      dbms_output.put_line(&apos;ID объекта: &apos; || to_char(p_payment_id));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="34">
+            <code class="sql">    end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="35">
+            <code class="sql">  end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="36">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="37">
+            <code class="sql">  dbms_output.put_line(&apos;&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="38">
+            <code class="sql">end;</code></li>
+</ol></pre></div>
+<div class="source_table" id="B881BB9415404F29514A1C28CD1B3F79"><div class="header"> <h3>PLSQL14_STUDENT6.INSERT_OR_UPDATE_PAYMENT_DETAIL</h3><h4><span class="red">0 %</span> lines covered</h4><div> <b>66</b> relevant lines. <span class="green"><b>0</b> lines covered</span> and <span class="red"><b>66</b> lines missed</span></div></div><pre><ol>
+
+            <li class="never" data-hits="" data-linenumber="1">
+            <code class="sql">procedure insert_or_update_payment_detail(p_payment_id payment.payment_id%type,</code></li>
+
+            <li class="never" data-hits="" data-linenumber="2">
+            <code class="sql">                                                            p_payment_details t_payment_detail_array) is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="3">
+            <code class="sql">  v_current_date timestamp(2) := sysdate; --Дата операции</code></li>
+
+            <li class="never" data-hits="" data-linenumber="4">
+            <code class="sql">  v_is_error boolean := false; --Флаг наличия ошибки при проверке данных</code></li>
+
+            <li class="never" data-hits="" data-linenumber="5">
+            <code class="sql">  v_payment_id payment.payment_id%type; --ID найденного платежа</code></li>
+
+            <li class="never" data-hits="" data-linenumber="6">
+            <code class="sql">begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="7">
+            <code class="sql">  --Проверка задания платежа и наличия его в базе</code></li>
+
+            <li class="never" data-hits="" data-linenumber="8">
+            <code class="sql">  if p_payment_id is null then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="9">
+            <code class="sql">    dbms_output.put_line(&apos;ID объекта не может быть пустым&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="10">
+            <code class="sql">    v_is_error := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="11">
+            <code class="sql">  else</code></li>
+
+            <li class="never" data-hits="" data-linenumber="12">
+            <code class="sql">    --Чтобы не плодить лишние переменные, а также для улучшения читаемости кода, я иногда делаю проверку через курсор.</code></li>
+
+            <li class="never" data-hits="" data-linenumber="13">
+            <code class="sql">    --Паша, как ты относишься к такому решению?</code></li>
+
+            <li class="never" data-hits="" data-linenumber="14">
+            <code class="sql">    select max(payment_id)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="15">
+            <code class="sql">    into v_payment_id</code></li>
+
+            <li class="never" data-hits="" data-linenumber="16">
+            <code class="sql">    from payment</code></li>
+
+            <li class="never" data-hits="" data-linenumber="17">
+            <code class="sql">    where payment_id = p_payment_id;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="18">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="19">
+            <code class="sql">    if v_payment_id is null then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="20">
+            <code class="sql">      dbms_output.put_line(&apos;Платеж ID=&apos; || to_char(p_payment_id) || &apos; не найден&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="21">
+            <code class="sql">      v_is_error := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="22">
+            <code class="sql">    end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="23">
+            <code class="sql">  end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="24">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="25">
+            <code class="sql">  --Провека на пустую коллекцию и на пустые поля коллекции</code></li>
+
+            <li class="never" data-hits="" data-linenumber="26">
+            <code class="sql">  if not v_is_error then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="27">
+            <code class="sql">    if p_payment_details is empty then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="28">
+            <code class="sql">      dbms_output.put_line(&apos;Коллекция не содержит данных&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="29">
+            <code class="sql">      v_is_error := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="30">
+            <code class="sql">    else</code></li>
+
+            <li class="never" data-hits="" data-linenumber="31">
+            <code class="sql">      for i in p_payment_details.first .. p_payment_details.last loop</code></li>
+
+            <li class="never" data-hits="" data-linenumber="32">
+            <code class="sql">        if p_payment_details(i).field_id is null then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="33">
+            <code class="sql">          dbms_output.put_line(&apos;Элемент коллекции №&apos; || to_char(i) || &apos;:&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="34">
+            <code class="sql">          dbms_output.put_line(&apos;ID поля не может быть пустым&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="35">
+            <code class="sql">          v_is_error := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="36">
+            <code class="sql">        end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="37">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="38">
+            <code class="sql">        if p_payment_details(i).field_value is null then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="39">
+            <code class="sql">          dbms_output.put_line(&apos;Элемент коллекции №&apos; || to_char(i) || &apos;:&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="40">
+            <code class="sql">          dbms_output.put_line(&apos;Значение в поле не может быть пустым&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="41">
+            <code class="sql">          v_is_error := true;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="42">
+            <code class="sql">        end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="43">
+            <code class="sql">      end loop;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="44">
+            <code class="sql">    end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="45">
+            <code class="sql">  end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="46">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="47">
+            <code class="sql">  --Изменение данных платежа</code></li>
+
+            <li class="never" data-hits="" data-linenumber="48">
+            <code class="sql">  if not v_is_error then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="49">
+            <code class="sql">    merge into payment_detail a</code></li>
+
+            <li class="never" data-hits="" data-linenumber="50">
+            <code class="sql">    using (select value(c).field_id as field_id, value(c).field_value as field_value</code></li>
+
+            <li class="never" data-hits="" data-linenumber="51">
+            <code class="sql">           from table(p_payment_details) c) b</code></li>
+
+            <li class="never" data-hits="" data-linenumber="52">
+            <code class="sql">    on (b.field_id = a.field_id and a.payment_id = p_payment_id)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="53">
+            <code class="sql">    when matched then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="54">
+            <code class="sql">      update set a.field_value = b.field_value</code></li>
+
+            <li class="never" data-hits="" data-linenumber="55">
+            <code class="sql">    when not matched then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="56">
+            <code class="sql">      insert (a.payment_id, a.field_id, a.field_value)</code></li>
+
+            <li class="never" data-hits="" data-linenumber="57">
+            <code class="sql">      values (p_payment_id, b.field_id, b.field_value);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="58">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="59">
+            <code class="sql">    dbms_output.put_line(&apos;Дата операции: &apos; || to_char(v_current_date, &apos;DL HH:MI:SS:AM&apos;));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="60">
+            <code class="sql">    dbms_output.put_line(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="61">
+            <code class="sql">      &apos;Данные платежа добавлены или обновлены по списку id_поля/значение&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="62">
+            <code class="sql">    dbms_output.put_line(&apos;ID объекта: &apos; || to_char(p_payment_id));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="63">
+            <code class="sql">  end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="64">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="65">
+            <code class="sql">  dbms_output.put_line(&apos;&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="66">
+            <code class="sql">end;</code></li>
+</ol></pre></div>
+<div class="source_table" id="1A417FF0AAF945F79CCC9533E07569A0"><div class="header"> <h3>PLSQL14_STUDENT6.SUCCESSFUL_FINISH_PAYMENT</h3><h4><span class="red">0 %</span> lines covered</h4><div> <b>33</b> relevant lines. <span class="green"><b>0</b> lines covered</span> and <span class="red"><b>33</b> lines missed</span></div></div><pre><ol>
+
+            <li class="never" data-hits="" data-linenumber="1">
+            <code class="sql">procedure successful_finish_payment(p_payment_id payment.payment_id%type) is</code></li>
+
+            <li class="never" data-hits="" data-linenumber="2">
+            <code class="sql">  --Используемые статусы:</code></li>
+
+            <li class="never" data-hits="" data-linenumber="3">
+            <code class="sql">  c_status_created constant payment.status%type := 0;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="4">
+            <code class="sql">  c_status_completed constant payment.status%type := 1;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="5">
+            <code class="sql">  --</code></li>
+
+            <li class="never" data-hits="" data-linenumber="6">
+            <code class="sql">  v_current_dtime timestamp(2) := systimestamp; --Дата операции</code></li>
+
+            <li class="never" data-hits="" data-linenumber="7">
+            <code class="sql">begin</code></li>
+
+            <li class="never" data-hits="" data-linenumber="8">
+            <code class="sql">  if p_payment_id is null then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="9">
+            <code class="sql">    dbms_output.put_line(&apos;ID объекта не может быть пустым&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="10">
+            <code class="sql">  else</code></li>
+
+            <li class="never" data-hits="" data-linenumber="11">
+            <code class="sql">    update payment</code></li>
+
+            <li class="never" data-hits="" data-linenumber="12">
+            <code class="sql">    set status = c_status_completed</code></li>
+
+            <li class="never" data-hits="" data-linenumber="13">
+            <code class="sql">    where payment_id = p_payment_id and status = c_status_created;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="14">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="15">
+            <code class="sql">    if sql%rowcount = 0 then</code></li>
+
+            <li class="never" data-hits="" data-linenumber="16">
+            <code class="sql">      dbms_output.put_line(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="17">
+            <code class="sql">        &apos;Платеж ID=&apos; ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="18">
+            <code class="sql">        to_char(p_payment_id)||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="19">
+            <code class="sql">        &apos; не найден или находится не в статусе &quot;Платеж создан&quot;&apos; ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="20">
+            <code class="sql">        c_status_created);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="21">
+            <code class="sql">    else</code></li>
+
+            <li class="never" data-hits="" data-linenumber="22">
+            <code class="sql">      dbms_output.put_line(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="23">
+            <code class="sql">        &apos;Дата операции: &apos; ||</code></li>
+
+            <li class="never" data-hits="" data-linenumber="24">
+            <code class="sql">        to_char(v_current_dtime, &apos;DD Month Year: &quot;Quarter=&quot;Q &quot;Week=&quot;W &quot;DayOfYear=&quot;DDD &quot;DayOfWeek&quot;=Day HH24:MI:SS&apos;));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="25">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="26">
+            <code class="sql">      dbms_output.put_line(</code></li>
+
+            <li class="never" data-hits="" data-linenumber="27">
+            <code class="sql">        &apos;Успешное завершение платежа. &apos; || &apos;Статус: &apos; || c_status_completed);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="28">
+            <code class="sql">      dbms_output.put_line(&apos;ID объекта: &apos; || to_char(p_payment_id));</code></li>
+
+            <li class="never" data-hits="" data-linenumber="29">
+            <code class="sql">    end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="30">
+            <code class="sql">  end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="31">
+            <code class="sql"></code></li>
+
+            <li class="never" data-hits="" data-linenumber="32">
+            <code class="sql">  dbms_output.put_line(&apos;&apos;);</code></li>
+
+            <li class="never" data-hits="" data-linenumber="33">
+            <code class="sql">end;</code></li>
+</ol></pre></div>
+<div class="source_table" id="AD7F0F457DE90625A454B6AC486406FA"><div class="header"> <h3>PLSQL14_STUDENT6.PAYMENT_B_D_RESTRICT</h3><h4><span class="green">100 %</span> lines covered</h4><div> <b>1</b> relevant lines. <span class="green"><b>1</b> lines covered</span> and <span class="red"><b>0</b> lines missed</span></div></div><pre><ol>
+
+            <li class="never" data-hits="" data-linenumber="1">
+            <code class="sql">begin</code></li>
+
+            <li class="covered" data-hits="4" data-linenumber="2">
+              <span class="hits">4</span>
+              <code class="sql">  payment_api_pack.deleting_restriction;  </code></li>
+
+            <li class="never" data-hits="" data-linenumber="3">
+            <code class="sql">end;</code></li>
+</ol></pre></div>
+<div class="source_table" id="FCBB96D10AA927578678E5035FDF57EA"><div class="header"> <h3>PLSQL14_STUDENT6.PAYMENT_B_IU_API</h3><h4><span class="green">100 %</span> lines covered</h4><div> <b>1</b> relevant lines. <span class="green"><b>1</b> lines covered</span> and <span class="red"><b>0</b> lines missed</span></div></div><pre><ol>
+
+            <li class="never" data-hits="" data-linenumber="1">
+            <code class="sql">begin</code></li>
+
+            <li class="covered" data-hits="38" data-linenumber="2">
+              <span class="hits">38</span>
+              <code class="sql">  payment_api_pack.api_restiction;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="3">
+            <code class="sql">end;</code></li>
+</ol></pre></div>
+<div class="source_table" id="BD0E7854D2B99306EEC40CC7C8C828BC"><div class="header"> <h3>PLSQL14_STUDENT6.PAYMENT_B_IU_TECH_FIELDS</h3><h4><span class="green">100 %</span> lines covered</h4><div> <b>5</b> relevant lines. <span class="green"><b>5</b> lines covered</span> and <span class="red"><b>0</b> lines missed</span></div></div><pre><ol>
+
+            <li class="covered" data-hits="32" data-linenumber="1">
+              <span class="hits">32</span>
+              <code class="sql">declare </code></li>
+
+            <li class="covered" data-hits="32" data-linenumber="2">
+              <span class="hits">32</span>
+              <code class="sql">  v_systimestamp timestamp := systimestamp;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="3">
+            <code class="sql">begin</code></li>
+
+            <li class="covered" data-hits="32" data-linenumber="4">
+              <span class="hits">32</span>
+              <code class="sql">  if inserting then</code></li>
+
+            <li class="covered" data-hits="25" data-linenumber="5">
+              <span class="hits">25</span>
+              <code class="sql">    :new.create_dtime_tech := v_systimestamp;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="6">
+            <code class="sql">  end if;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="7">
+            <code class="sql"></code></li>
+
+            <li class="covered" data-hits="32" data-linenumber="8">
+              <span class="hits">32</span>
+              <code class="sql">  :new.update_dtime_tech := v_systimestamp;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="9">
+            <code class="sql">end;</code></li>
+</ol></pre></div>
+<div class="source_table" id="D35E08B3B443B28561DC50F0BF5DBF44"><div class="header"> <h3>PLSQL14_STUDENT6.PAYMENT_DETAIL_B_IUD_API</h3><h4><span class="green">100 %</span> lines covered</h4><div> <b>1</b> relevant lines. <span class="green"><b>1</b> lines covered</span> and <span class="red"><b>0</b> lines missed</span></div></div><pre><ol>
+
+            <li class="never" data-hits="" data-linenumber="1">
+            <code class="sql">begin</code></li>
+
+            <li class="covered" data-hits="40" data-linenumber="2">
+              <span class="hits">40</span>
+              <code class="sql">  payment_detail_api_pack.api_restiction;</code></li>
+
+            <li class="never" data-hits="" data-linenumber="3">
+            <code class="sql">end;</code></li>
+</ol></pre></div>
+</div></div></div></body></html>
